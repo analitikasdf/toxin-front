@@ -1,0 +1,150 @@
+
+
+* {
+	font-family: Montserrat;
+	box-sizing: border-box;
+}
+.Input {
+	display: block;
+	margin: 10px auto;
+	width: 100%;
+	height: 44px;
+	background: #FFFFFF;
+	border: 1px solid rgba(31, 32, 65, 0.25);
+	border-radius: 4px;
+	padding-left: 15px;
+	font-weight: normal;
+	font-size: 14px;
+	color: rgba(31, 32, 65, 0.75);
+	&::placeholder {
+		color: rgba(31, 32, 65, 0.25);
+	  }
+}
+.Button {
+	padding: 10px 0;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: bold;
+	border: none;
+	position: relative;
+	width: 87px;
+	height: 34px;
+	margin: 0px 20px 0px 16px;
+	border-radius: 22px;
+	background: #fff;
+	text-align: center;
+	color: #BC9CFF;
+	&:before {
+		content: "";
+		position: absolute;
+		top: -2px;
+		bottom: -2px;
+		left: -2px;
+		right: -2px;
+		background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%) !important;
+		border-radius: 26px;
+		z-index: -1;
+	}
+	&:active {
+		opacity: .5;
+	}
+}
+.ButtonGradient {
+	text-align: center;
+	padding: 10px 0px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	width: 196px;
+	height: 34px;
+	left: 1104px;
+	top: 158px;
+	background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+	border-radius: 22px;
+	border: none;
+	color: #fff;
+	text-transform: uppercase;
+	transition: all .2s;
+	&.Reg {
+		width: 320px;
+		height: 44px;
+	}
+	&:active {
+		opacity: .5;
+	}
+}
+
+
+ /* для элемента input c type="radio" */
+ .custom-radio {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  /* для элемента label связанного с .custom-radio */
+  .custom-radio+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+  }
+  /* создание в label псевдоэлемента  before со следующими стилями */
+  .custom-radio+label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 12px 12px;
+  }
+  /* стили при наведении курсора на радио */
+  .custom-radio:not(:disabled):not(:checked)+label:hover::before {
+    border-color: #b3d7ff;
+  }
+  /* стили для активной радиокнопки (при нажатии на неё) */
+  .custom-radio:not(:disabled):active+label::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+  }
+  /* стили для радиокнопки, находящейся в фокусе */
+  .custom-radio:focus+label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+  .custom-radio:focus:not(:checked)+label::before {
+    border-color: #80bdff;
+  }
+  /* стили для радиокнопки, находящейся в состоянии checked */
+  .custom-radio:checked+label::before {
+    border-color: rgba(31, 32, 65, 0.25);
+    background-color: #fff;
+    background-image: url("assets/icons/RadioSvg.svg");
+  }
+  /* стили для радиокнопки, находящейся в состоянии disabled */
+  .custom-radio:disabled+label::before {
+    background-color: #e9ecef;
+  }
+
+//   Link
+
+a {
+	text-decoration: none;
+}
+
+// Toggle
+
+:root {
+	--toggle-width: 40px;
+	--toggle-height: 20px;
+	--toggle-bg-on: #BC9CFF;
+	--toggle-bg-off: #e5e7eb;
+	--toggle-border-on: #BC9CFF;
+	--toggle-border-off: #e5e7eb;
+	
+  }
