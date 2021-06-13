@@ -2,8 +2,11 @@
 	<div class="ModalWrap" @click="closeModal">
 		<form action="" class="Form" @click.stop>
 			<h2 class="Title">Регистрация аккаунта</h2>
-			<input class="Input" type="text" placeholder="Имя" v-model="user.name">
-			<input class="Input" type="text" placeholder="Фамилия" v-model="user.surname">
+			<input class="Input" type="text" placeholder="Имя" v-model="v$.user.name.$model">
+			<!-- <pre>{{v$.user.$model}}</pre> -->
+			<div v-if="v$.user.name.required.$invalid && v$.user.name.$dirty" class="Valid">поле не может быть пустым</div>
+			<input class="Input" type="text" placeholder="Фамилия" v-model="v$.user.surname.$model">
+			<div v-if="v$.user.surname.required.$invalid && v$.user.surname.$dirty" class="Valid">поле не может быть пустым</div>
 			<input class="custom-radio" type="radio" id="man"  name="radio" value="Мужчина" v-model="user.picked">
 				<label for="man">Мужчина</label>
 			<input class="custom-radio" type="radio" id="woman" name="radio" value="Женщина" v-model="user.picked">
@@ -11,8 +14,11 @@
 			<h2 class="SubTitle">дата рождения</h2>
 			<input class="Input" type="date" name="" id="date">
 			<h2 class="SubTitle">данные для входа в сервис</h2>
-			<input class="Input" type="email" name="" id="email" placeholder="Email" v-model="user.email">
-			<input class="Input" type="password" name="" id="password" placeholder="Пароль" v-model="user.password">
+			<input class="Input" type="email" name="" id="email" placeholder="Email" v-model="v$.user.email.$model">
+			<div v-if="!v$.user.email.email.$response" class="Valid">укажите почту верно</div>
+			<div v-if="v$.user.email.required.$invalid && v$.user.email.$dirty" class="Valid">поле не может быть пустым</div>
+			<input class="Input" type="password" name="" id="password" placeholder="Пароль" v-model="v$.user.password.$model">
+			<div v-if="v$.user.password.required.$invalid && v$.user.password.$dirty" class="Valid">поле не может быть пустым</div>
 			<div class="WrapperCheckbox">
 				<Toggle v-model="options.value" class="Toggle" :="options"/><span class="CheckboxText">Получать спецпредложения</span>
 			</div>
@@ -30,6 +36,8 @@
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
 import Toggle from '@vueform/toggle'
 
 export default { 
@@ -40,6 +48,9 @@ export default {
 	components: {
       Toggle,
     },
+	setup () {
+		return { v$: useVuelidate() }
+	},
 	data() {
 		return {
 			user: {
@@ -54,18 +65,39 @@ export default {
 			},
 		}
 	},
+	validations () {
+		return {
+			user: {
+				name: { required },
+				surname: {required},
+				email: { required, email },
+				password: {required}
+			},
+			// firstName: { required }, // Matches this.firstName
+			// lastName: { required }, // Matches this.lastName
+			// contact: {
+			// 	email: { required, email } // Matches this.contact.email
+			// }
+		}
+	},
 	methods: {
 		createUser() {
-			const newUser = {
-				name: this.user.name,
-				surname: this.user.surname,
-				picked: this.user.picked,
-				email: this.user.email,
-				password: this.user.password,
-			}
-			this.$store.dispatch('createNewUser', newUser)
+			this.v$.$touch()
 
-			console.log(newUser);
+			if (this.v$.$error) return 
+				const newUser = {
+				name: this.v$.user.$model.name,
+				surname: this.v$.user.$model.surname,
+				// picked: this.v$.user.picked,
+				email: this.v$.user.$model.email,
+				password: this.v$.user.$model.password,
+				}
+				this.$store.dispatch('createNewUser', newUser)
+
+				console.log(newUser);
+
+			
+			
 		},
 		closeModal() {
 			this.$router.push('/')
