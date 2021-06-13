@@ -113,6 +113,7 @@ export default {
 		height: auto;
 		border: 1px solid rgba(0, 0, 0, 0.12);
 		background: #FFF;
+		z-index: 0;
 		& > .Woomen {
 			margin-left: 20px;
 		}

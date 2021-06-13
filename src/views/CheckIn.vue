@@ -2,22 +2,24 @@
 	<div class="ModalWrap" @click="closeModal">
 		<form action="" class="Form" @click.stop>
 			<h2 class="Title">Регистрация аккаунта</h2>
-			<input class="Input" type="text" placeholder="Имя" v-model="v$.user.name.$model">
+			<input class="Input animate__animated" :class="classObject" type="text" placeholder="Имя" v-model="v$.user.name.$model">
 			<!-- <pre>{{v$.user.$model}}</pre> -->
 			<div v-if="v$.user.name.required.$invalid && v$.user.name.$dirty" class="Valid">поле не может быть пустым</div>
-			<input class="Input" type="text" placeholder="Фамилия" v-model="v$.user.surname.$model">
+			<input class="Input animate__animated" :class="classObject" type="text" placeholder="Фамилия" v-model="v$.user.surname.$model">
 			<div v-if="v$.user.surname.required.$invalid && v$.user.surname.$dirty" class="Valid">поле не может быть пустым</div>
-			<input class="custom-radio" type="radio" id="man"  name="radio" value="Мужчина" v-model="user.picked">
+			<div class="RadioBlock">
+				<input class="custom-radio" type="radio" id="man"  name="radio" value="Мужчина" v-model="user.picked">
 				<label for="man">Мужчина</label>
-			<input class="custom-radio" type="radio" id="woman" name="radio" value="Женщина" v-model="user.picked">
+				<input class="custom-radio Wooman" type="radio" id="woman" name="radio" value="Женщина" v-model="user.picked">
 				<label for="woman" class="Woomen">Женщина</label>
+			</div>
 			<h2 class="SubTitle">дата рождения</h2>
 			<input class="Input" type="date" name="" id="date">
 			<h2 class="SubTitle">данные для входа в сервис</h2>
-			<input class="Input" type="email" name="" id="email" placeholder="Email" v-model="v$.user.email.$model">
+			<input class="Input animate__animated" :class="classObject" type="email" name="" id="email" placeholder="Email" v-model="v$.user.email.$model">
 			<div v-if="!v$.user.email.email.$response" class="Valid">укажите почту верно</div>
 			<div v-if="v$.user.email.required.$invalid && v$.user.email.$dirty" class="Valid">поле не может быть пустым</div>
-			<input class="Input" type="password" name="" id="password" placeholder="Пароль" v-model="v$.user.password.$model">
+			<input class="Input animate__animated" :class="classObject" type="password" name="" id="password" placeholder="Пароль" v-model="v$.user.password.$model">
 			<div v-if="v$.user.password.required.$invalid && v$.user.password.$dirty" class="Valid">поле не может быть пустым</div>
 			<div class="WrapperCheckbox">
 				<Toggle v-model="options.value" class="Toggle" :="options"/><span class="CheckboxText">Получать спецпредложения</span>
@@ -26,7 +28,7 @@
 			<div class="LogIn">
 				<p class="Account">Уже есть аккаунт на Toxin</p>
 				<div class="wr">
-					<button class="Button">войти</button>
+					<router-link to="/login" class="Button">войти</router-link>
 				</div>
 			</div>
 			<!-- <img src='' class="CloseForm" /> -->
@@ -95,21 +97,26 @@ export default {
 				this.$store.dispatch('createNewUser', newUser)
 
 				console.log(newUser);
-
-			
-			
 		},
 		closeModal() {
 			this.$router.push('/')
 		}
 	},
 	computed: {
-		
+		classObject() {
+			return {
+				animate__headShake: this.v$.user.email.$error,
+				ErrorClass: this.v$.user.email.$error
+			}
+		}
 	}
 }
 </script>
 
 <style lang="scss" scope>
+	.ErrorClass {
+		border-color: red;
+	}
 	.ModalWrap {
 		display: flex;
 		position: fixed; 
@@ -133,6 +140,7 @@ export default {
 		height: auto;
 		border: 1px solid rgba(0, 0, 0, 0.12);
 		background: #FFF;
+		z-index: 0;
 		& > .Woomen {
 			margin-left: 20px;
 		}
@@ -147,12 +155,20 @@ export default {
 		font-weight: bold;
 		font-size: 12px;
 		text-align: left;
-		text-transform: uppercase;
+		text-transform: uppercase;input:nth-last-child() {
+			margin-left: 10px;
+		}
 	}
 	.Special {
 		font-weight: normal;
 		font-size: 14px;
 		color: rgba(31, 32, 65, 0.75);
+	}
+	.RadioBlock {
+		margin: 10px 0;
+		.Woomen {
+			margin-left: 10px;
+		}
 	}
 	.LogIn {
 		display: flex;
@@ -193,5 +209,10 @@ export default {
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
+		margin: 10px 0;
+	}
+	.Valid { 
+		font-size: 11px;
+		color: red;
 	}
 </style>

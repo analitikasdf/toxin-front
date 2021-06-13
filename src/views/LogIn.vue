@@ -2,8 +2,11 @@
     <div class="ModalWrap" @click="closeModal">
 		<form action="" class="Form" @click.stop>
 			<h2 class="Title">Войти</h2>
-			<input class="Input" type="email" placeholder="Email" v-model="user.email">
-			<input class="Input" type="password" placeholder="Пароль" v-model="user.password">
+			<input class="Input animate__animated" :class="classObject" type="email" name="" id="email" placeholder="Email" v-model="user.email">
+			<div v-if="!v$.user.email.email.$response" class="Valid">укажите почту верно</div>
+			<div v-if="v$.user.email.required.$invalid && v$.user.email.$dirty" class="Valid">поле не может быть пустым</div>
+			<input class="Input animate__animated" :class="classObject" type="password" name="" id="password" placeholder="Пароль" v-model="user.password">
+			<div v-if="v$.user.password.required.$invalid && v$.user.password.$dirty" class="Valid">поле не может быть пустым</div>
 			<div class="LogIn">
 				<p class="Account">Уже есть аккаунт на Toxin</p>
 				<div class="wr">
@@ -17,6 +20,9 @@
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+
 export default {
 	emits: {
 		hendleCloseModalLogIn: null
@@ -26,7 +32,23 @@ export default {
 			user: {
 				email: '',
 				password: '',
-			}
+			},
+		}
+	},
+	setup () {
+		return { v$: useVuelidate() }
+	},
+	validations () {
+		return {
+			user: {
+				email: { required, email },
+				password: {required}
+			},
+			// firstName: { required }, // Matches this.firstName
+			// lastName: { required }, // Matches this.lastName
+			// contact: {
+			// 	email: { required, email } // Matches this.contact.email
+			// }
 		}
 	},
 	methods: {
@@ -35,20 +57,45 @@ export default {
             this.$router.push('/')
 		},
 		async logInUser() {
+			await this.v$.$touch()
+
+			if (this.v$.$error) return
+
 			const user = {
 				email: this.user.email,
-				password: this.user.password
+				password: this.user.password,
 			}
 			await this.$store.dispatch('logInUser', user)
-			this.closeModal()
-			console.log(this.$store.state.logInUser, 'вывод пользователя');
+		},
+	},
+	computed: {
+		setUser() {
+			return this.$store.state.logIn.loginUser.username
+		},
+		classObject() {
+			return {
+				animate__headShake: this.v$.user.email.$error,
+				ErrorClass: this.v$.user.email.$error
+			}
 		}
 	},
+	watch: {
+		setUser() {
+			this.closeModal()
+		}
+	}
 }
 </script>
 
 
 <style lang="scss" scouped>
+	.ErrorClass {
+		border-color: red;
+	}
+	.Valid { 
+		font-size: 11px;
+		color: red;
+	}
 	.Title {
 		text-align-last: left;
 	}
@@ -75,6 +122,7 @@ export default {
 		height: auto;
 		border: 1px solid rgba(0, 0, 0, 0.12);
 		background: #FFF;
+		z-index: 0;
 		& > .Woomen {
 			margin-left: 20px;
 		}
