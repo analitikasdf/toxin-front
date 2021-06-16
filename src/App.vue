@@ -51,6 +51,14 @@ export default {
 		getUser() {
 			return this.$store.state.loginUser
 		}
+	},
+	created: function() {
+		
+		let data = JSON.parse(localStorage.getItem('user'))
+		console.log(data);
+		if (data) {
+			this.$store.commit('localStorage', data)
+		}
 	}
 }
 	

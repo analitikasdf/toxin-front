@@ -2,12 +2,18 @@ import axios from 'axios'
 
 export default {
     state: {
-		loginUser: {}
+		loginUser: {},
+		loginUserError: {},
 	},
 	mutations: {
 		updateUser(state, item) {
 			state.loginUser = item
-			console.log(item, 'mutation');
+		},
+		updateUserError(state, item) {
+			state.loginUserError = item
+		},
+		localStorage(state, item) {
+			state.loginUser = item
 		}
 	},
 	actions: {
@@ -23,10 +29,12 @@ export default {
 				console.log('User profile', response.data.user);
 				console.log('User token', response.data.jwt);
 				commit('updateUser',  response.data.user)
+				localStorage.setItem('user', JSON.stringify(response.data.user))
 			})
 			.catch(error => {
 				// Handle error.
 				console.log('An error occurred:', error.response);
+				commit('updateUserError', error.response)
 			});
 			
 		}

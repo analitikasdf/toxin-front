@@ -1,6 +1,7 @@
 <template>
     <div class="ModalWrap" @click="closeModal">
 		<form action="" class="Form" @click.stop>
+			<div v-if="setUserError.data?.error" class="errorLogin">неверное имя пользователя или пароль</div>
 			<h2 class="Title">Войти</h2>
 			<input class="Input animate__animated" :class="classObject" type="email" name="" id="email" placeholder="Email" v-model="user.email">
 			<div v-if="!v$.user.email.email.$response" class="Valid">укажите почту верно</div>
@@ -22,6 +23,7 @@
 <script>
 import useVuelidate from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
+import { useStorage } from '@vueuse/core'
 
 export default {
 	emits: {
@@ -36,7 +38,13 @@ export default {
 		}
 	},
 	setup () {
-		return { v$: useVuelidate() }
+		const store = useStorage('my-storage', 
+			{
+				user: 123
+			}
+		)
+
+		return { v$: useVuelidate(), store }
 	},
 	validations () {
 		return {
@@ -66,11 +74,16 @@ export default {
 				password: this.user.password,
 			}
 			await this.$store.dispatch('logInUser', user)
+
+			
 		},
 	},
 	computed: {
 		setUser() {
 			return this.$store.state.logIn.loginUser.username
+		},
+		setUserError() {
+			return this.$store.state.logIn.loginUserError
 		},
 		classObject() {
 			return {
@@ -83,7 +96,7 @@ export default {
 		setUser() {
 			this.closeModal()
 		}
-	}
+	},
 }
 </script>
 
