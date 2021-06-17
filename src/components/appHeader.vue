@@ -1,24 +1,28 @@
 <template>
-	<nav class="Header Container">
-		<img src="../assets/images/LogoHeader.svg" class="Logo" alt="Logo">
-		<div class="Menu">
-			<div class="MenuItem" v-for="link in menu.menu" :key="link">
-				<a
-				class="MenuLink"
-				:class="{'drop': link?.subMenu.length > 0}"
-				@click="dropMenu(link.linkName)"
-				href="#"
-				>{{link.linkName}}</a>
-				<div class="DropMenu" :class="{active: link.isDrop}" ref="drop">
-					<a class="DropMenuLink MenuLink" href="" v-for="dropLink in link.subMenu" :key="dropLink">{{dropLink}}</a>
+	<nav class="Header">
+		<div class="Wrapp Container">
+			<img src="../assets/images/LogoHeader.svg" class="Logo" alt="Logo">
+			<div class="Wrapp">
+				<div class="Menu">
+				<div class="MenuItem" v-for="link in menu.menu" :key="link">
+					<a
+					class="MenuLink"
+					:class="{'drop': link?.subMenu.length > 0}"
+					@click="dropMenu(link.linkName)"
+					href="#"
+					>{{link.linkName}}</a>
+					<div class="DropMenu" :class="{active: link.isDrop}" ref="drop">
+						<a class="DropMenuLink MenuLink" href="" v-for="dropLink in link.subMenu" :key="dropLink">{{dropLink}}</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="Authorization">
-			<router-link v-if="!loginUser" to="/login" class="Button" @click.prevent="openModalLogIn">войти</router-link>
-			<router-link v-if="loginUser" to="/" class="Button" @click.prevent="logOut">выйти</router-link>
-			<router-link v-if="!loginUser" to="/checkin" class="ButtonGradient" @click.prevent="openModalCheckin">зарегистрироваться</router-link>
-			<div v-if="loginUser" class="Checked">{{loginUser}}</div>
+			<div class="Authorization">
+				<router-link v-if="!loginUser" to="/login" class="Button" @click.prevent="openModalLogIn">войти</router-link>
+				<router-link v-if="loginUser" to="/" class="Button" @click.prevent="logOut">выйти</router-link>
+				<router-link v-if="!loginUser" to="/checkin" class="ButtonGradient" @click.prevent="openModalCheckin">зарегистрироваться</router-link>
+				<div v-if="loginUser" class="Checked">{{loginUser}}</div>
+			</div>
+			</div>
 		</div>
 	</nav>
 </template>
@@ -72,21 +76,25 @@ export default {
 
 <style lang="scss" scoped>
 	.Header {
-		display: flex;
-		justify-content: flex-end;
 		height: 70px;
-		position: relative;
+		box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+		.Wrapp {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+	.Wrapp {
+		.Menu {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			margin-right: 0px;
+		}
 	}
 	.Logo {
 		margin: 15px 0px;
-		position: absolute;
 		top: 0px;
 		left: 0px;
-	}
-	.Menu {
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
 	}
 	.MenuLink {
 		font-family: Montserrat;
@@ -146,5 +154,4 @@ export default {
 		font-size: 14px;
 		color: rgba(31, 32, 65, 0.5);
 	}
-	
 </style>
