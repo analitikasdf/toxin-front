@@ -67,8 +67,7 @@ export default {
 			this.$emit('ModalLogIn')
 		},
 		logOut() {
-			this.$store.state.logIn.loginUser = {
-			}
+			this.$store.commit('logOut')
 		}
 	}
 }

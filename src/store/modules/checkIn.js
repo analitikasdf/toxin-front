@@ -11,7 +11,8 @@ export default {
 	},
 	actions: {
 		createNewUser({commit}, {name, email, password}) {
-			axios.post('http://localhost:1337/auth/local/register', {
+
+			axios.post(`${process.env.VUE_APP_BASE_URL}/auth/local/register`, {
 				username: name,
 				email: email,
 				password: password,

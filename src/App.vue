@@ -59,6 +59,8 @@ export default {
 		if (data) {
 			this.$store.commit('localStorage', data)
 		}
+
+		console.log(process.env.VUE_BASE_URL, "test");
 	}
 }
 	

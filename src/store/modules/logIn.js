@@ -14,12 +14,16 @@ export default {
 		},
 		localStorage(state, item) {
 			state.loginUser = item
+		},
+		logOut(state) {
+			state.loginUser = {}
+			localStorage.setItem('user', {})
 		}
 	},
 	actions: {
 		logInUser({commit}, { email, password }) {
 			axios
-			.post('http://localhost:1337/auth/local', {
+			.post(`${process.env.VUE_APP_BASE_URL}/auth/local`, {
 				identifier: email,
 				password: password,
 			})
