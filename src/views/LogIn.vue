@@ -1,4 +1,5 @@
 <template>
+	<div class="ImgMain"></div>
     <div class="ModalWrap" @click="closeModal">
 		<form action="" class="Form" @click.stop>
 			<div v-if="setUserError.data?.error" class="errorLogin">неверное имя пользователя или пароль</div>

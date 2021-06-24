@@ -1,11 +1,16 @@
 <template>
-	<div></div>
+	<div class="ImgMain">
+		
+	</div>
+	<app-calendar />
 </template>
 
 <script>
-	// @ is an alias to /src
+import appCalendar from '@/components/appCalendar.vue'
+
 
 export default {
+  components: { appCalendar },
 	
 }
 </script>

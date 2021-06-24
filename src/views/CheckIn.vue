@@ -1,4 +1,5 @@
 <template>
+	<div class="ImgMain"></div>
 	<div class="ModalWrap" @click="closeModal">
 		<form action="" class="Form" @click.stop>
 			<h2 class="Title">Регистрация аккаунта</h2>

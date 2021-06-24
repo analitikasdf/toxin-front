@@ -1,7 +1,6 @@
 <template>
 	<app-header/>
 	<router-view/>
-	<div class="ImgMain"></div>
 	<app-footer />
 </template>
 
@@ -77,6 +76,7 @@ export default {
 		margin: 0 auto;
 	}
 	.ImgMain {
+		position: relative;
 		height: 800px;
 		background: center/cover no-repeat url('./assets/images/bg-main.png');
 	}
