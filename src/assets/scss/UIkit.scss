@@ -1,8 +1,20 @@
+/*	#################### - Developer toxin.ru - ########################	*/
+/*																			*/
+/*	#################### - Developer toxin.ru - ########################	*/
 
-
+@import './assets/scss/_variables.scss';
 * {
 	font-family: Montserrat;
 	box-sizing: border-box;
+}
+
+:root {
+	--toggle-width: 40px;
+	--toggle-height: 20px;
+	--toggle-bg-on: #BC9CFF;
+	--toggle-bg-off: #e5e7eb;
+	--toggle-border-on: #BC9CFF;
+	--toggle-border-off: #e5e7eb;
 }
 .Input {
 	display: block;
@@ -34,7 +46,7 @@
 	border-radius: 22px;
 	background: #fff;
 	text-align: center;
-	color: #BC9CFF;
+	color: $ColorPurple;
 	&:before {
 		content: "";
 		position: absolute;
@@ -58,7 +70,7 @@
 	font-size: 12px;
 	width: 196px;
 	height: 34px;
-	background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+	background: linear-gradient(180deg, $ColorPurple 0%, #8BA4F9 100%);
 	border-radius: 22px;
 	border: none;
 	color: #fff;
@@ -138,12 +150,3 @@ a {
 
 // Toggle
 
-:root {
-	--toggle-width: 40px;
-	--toggle-height: 20px;
-	--toggle-bg-on: #BC9CFF;
-	--toggle-bg-off: #e5e7eb;
-	--toggle-border-on: #BC9CFF;
-	--toggle-border-off: #e5e7eb;
-	
-  }

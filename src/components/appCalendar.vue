@@ -1,5 +1,5 @@
 <template>
-	<div class="Main">
+	<form class="Main">
 		<div class="Title">Найдём номера под ваши пожелания</div>
 		<div class="Arrival">прибытие
 			<input class="Input" type="date">
@@ -11,7 +11,7 @@
 			<input class="Input" type="number">
 		</div>
 		<button class="ButtonGradient" @click="toRooms">подобрать номер</button>
-	</div>
+	</form>
 </template>
 
 <script>

@@ -68,7 +68,8 @@ export default {
 
 <style lang="scss">
 	@import './assets/fonts/stylesheet.css';
-	@import './assets/css/UIkit.scss';
+	@import './assets/scss/UIkit.scss';
+	@import './assets/scss/_variables.scss';
 
 
 	.Container {
