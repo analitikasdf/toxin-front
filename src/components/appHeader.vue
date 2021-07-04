@@ -1,9 +1,9 @@
 <template>
 	<nav class="Header">
 		<div class="Wrapp Container">
-			<img src="../assets/images/LogoHeader.svg" class="Logo" alt="Logo">
+			<img src="../assets/images/LogoHeader.svg" class="Logo" alt="Logo" @click="goToHome">
 			<div class="Wrapp">
-				<div class="Menu">
+				<div class="Menu" >
 				<div class="MenuItem" v-for="link in menu.menu" :key="link">
 					<a
 					class="MenuLink"
@@ -11,7 +11,7 @@
 					@click="dropMenu(link.linkName)"
 					href="#"
 					>{{link.linkName}}</a>
-					<div class="DropMenu" :class="{active: link.isDrop}" ref="drop">
+					<div class="DropMenu" :class="{active: link.isDrop}" ref="target">
 						<a class="DropMenuLink MenuLink" href="" v-for="dropLink in link.subMenu" :key="dropLink">{{dropLink}}</a>
 					</div>
 				</div>
@@ -28,6 +28,9 @@
 </template>
 
 <script>
+// import { ref } from 'vue'
+// import { onClickOutside } from '@vueuse/core'
+
 export default {
 	emits: {
 		openModalCheckIn: null,
@@ -41,6 +44,13 @@ export default {
 			activeDrop: false,
 		}
 	},
+	// setup() {
+	// 	const target = ref(null)
+
+	// 	onClickOutside(target, (event) => console.log(event))
+		
+	// 	return { target }
+	// },
 	computed: {
 		loginUser() {
 			return this.$store.state.logIn.loginUser.username
@@ -68,6 +78,9 @@ export default {
 		},
 		logOut() {
 			this.$store.commit('logOut')
+		},
+		goToHome() {
+			this.$router.push('/')
 		}
 	}
 }
@@ -94,6 +107,7 @@ export default {
 		margin: 15px 0px;
 		top: 0px;
 		left: 0px;
+		cursor: pointer;
 	}
 	.MenuLink {
 		font-family: Montserrat;
@@ -136,6 +150,7 @@ export default {
 		background-color: #fff;
 		&.active{
 			display: block;
+			z-index: 9999;
 		}
 
 	}

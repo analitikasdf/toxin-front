@@ -42,26 +42,21 @@ export default {
 		background: #FFFFFF;
 		border: 1px solid rgba(0, 0, 0, 0.12);
 		box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
-		border-radius: 4px;
-		
+		border-radius: 4px;	
 	}
 	.Title {
-		width: 100%;
-		margin-bottom: 20px;
-		font-weight: bold;
-		font-size: 24px;
+		text-align: left;
 	}
 	.Arrival, .Departure {
 		width: 45%;
 		display: inline-block;
 		font-weight: bold;
 		font-size: 12px;
-		text-transform: uppercase;
-		
+		text-transform: uppercase;	
 	}
 	.Guests {
 		width: 100%;
-		margin: 20px 0px;
+		margin: 10px 0px 20px;
 		font-weight: bold;
 		font-size: 12px;
 		text-transform: uppercase;

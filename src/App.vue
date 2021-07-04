@@ -7,8 +7,6 @@
 <script>
 import appHeader from '@/components/appHeader'
 import appFooter from '@/components/appFooter'
-// import appCheckIn from '@/components/appCheckIn'
-// import AppLogIn from '@/components/appLogIn.vue'
 
 
 export default {
@@ -52,7 +50,6 @@ export default {
 		}
 	},
 	created: function() {
-		
 		let data = JSON.parse(localStorage.getItem('user'))
 		console.log(data);
 		if (data) {
@@ -68,8 +65,8 @@ export default {
 
 <style lang="scss">
 	@import './assets/fonts/stylesheet.css';
-	@import './assets/scss/UIkit.scss';
 	@import './assets/scss/_variables.scss';
+	@import './assets/scss/UIkit.scss';
 
 
 	.Container {

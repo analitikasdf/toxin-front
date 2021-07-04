@@ -100,7 +100,23 @@
 				<div class="Guests">гости
 					<input class="Input" type="number">
 				</div>
-				<button class="ButtonGradient" @click="toRooms">подобрать номер</button>
+				<div class="PriceItem">
+					<div class="Item">9 990₽ х 4 суток</div>
+					<div class="Item">39 960₽</div>
+				</div>
+				<div class="PriceItem">
+					<div class="Item">Сбор за услуги: скидка 2 179₽</div>
+					<div class="Item">0₽</div>
+				</div>
+				<div class="PriceItem">
+					<div class="Item">Сбор за дополнительные услуги</div>
+					<div class="Item">300₽</div>
+				</div>
+				<div class="PriceItem Total">
+					<div class="Item Total">Итого</div>
+					<div class="Item Total">38 081₽</div>
+				</div>
+				<button class="ButtonGradient" @click="toRooms">забронировать</button>
 			</form>
 		</div>
 	</div>
@@ -137,79 +153,95 @@ export default {
 	.RoomInfo {
 		width: 66%;
 	}
-	.Form {
-		display: flex;
-		flex-wrap: wrap;
-		padding:40px 30px;
-		max-width: 380px;
-		background: #FFFFFF;
-		border: 1px solid rgba(0, 0, 0, 0.12);
-		box-sizing: border-box;
-		box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
-		border-radius: 4px;
-	}
-	.RoomInfoHeader {
-		display: flex;
-		align-items: flex-end;
-		.Order {
-			font-weight: bold;
-			font-size: 18px;
-			color: #1F2041;
-		}
-		.Lux {
-			flex-basis: 10%;
-			font-size: 12px;
-			font-weight: bold;
-			line-height: 15px;
-			color: #BC9CFF;
-			margin-left: 8px;
-		}
-		.Price {
-			font-size: 14px;
-			font-weight: bold;
-			color: rgba(31, 32, 65, 0.5);
-			margin-left: auto;
-		}
-	}
 	.RoomCalculator {
 		width: 34%;
 	}
-	.Title {
-		font-weight: bold;
-		font-size: 19px;
-		color: #1F2041;
-	}
-	.Arrival, .Departure {
-		width: 45%;
-		display: inline-block;
-		font-weight: bold;
-		font-size: 12px;
-		text-transform: uppercase;
-		
-	}
-	.Guests {
-		width: 100%;
-		margin: 20px 0px;
-		font-weight: bold;
-		font-size: 12px;
-		text-transform: uppercase;
-		input {
-			display: block;
+	.Form {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		.RoomInfoHeader {
+			display: flex;
+			flex: 1 0 auto;
+			align-items: flex-end;
+			justify-content: space-between;
+			margin: 0 0 20px;
+			.Order {
+				font-weight: bold;
+				font-size: 18px;
+				color: #1F2041;
+			}
+			.Lux {
+				flex-basis: 10%;
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 15px;
+				color: #BC9CFF;
+				margin-left: 8px;
+			}
+			.Price {
+				font-size: 14px;
+				font-weight: bold;
+				color: rgba(31, 32, 65, 0.5);
+				margin-left: auto;
+			}
+		}
+		.Arrival, .Departure {
+			width: 45%;
+			display: inline-block;
+			font-weight: bold;
+			font-size: 12px;
+			text-transform: uppercase;
+			
+		}
+		.Guests {
+			width: 100%;
+			margin: 10px 0px 20px;
+			font-weight: bold;
+			font-size: 12px;
+			text-transform: uppercase;
+			input {
+				display: block;
+			}
+		}
+		.ButtonGradient {
+			width: 100%;
+			position: relative;
+			z-index: 1;
+			margin: 0px 0px 10px;
+			&::after {
+				content: '';
+				top: 6px;
+				right: 10px;
+				display: block;
+				height: 22px;
+				width: 22px;
+				position: absolute;
+				background: url('../assets/icons/arrow_forward.svg') center/cover ;
+			}
+		}
+		.PriceItem {
+			display: flex;
+			flex: 1 0 auto;
+			align-items: center;
+			justify-content: space-between;
+			margin: 10px 0 0px;
+			.Item{ 
+				font-size: 14px;
+				color: $ColorDark2;
+			}
+			&.Total {
+				.Item { 
+					margin: 20px 0;
+					&.Total {
+						font-weight: bold;
+						font-size: 19px;
+					}
+				}	
+			}
 		}
 	}
-	.ButtonGradient {
-		width: 100%;
-		position: relative;
-		z-index: 1;
-		&::after {
-			content: '';
-			top: 6px;
-			right: 10px;
-			display: block;
-			height: 22px;
-			width: 22px;
-			position: absolute;
-			background: url('../assets/icons/arrow_forward.svg') center/cover ;
-		}
-	}
+	
+	
+	
 </style>

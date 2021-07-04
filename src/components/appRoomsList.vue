@@ -2,7 +2,7 @@
 	<div>
 		<h3 class="Title">Номера, которые мы для вас подобрали</h3>
 		<div class="Content">
-			<div class="RoomCard">
+			<div class="RoomCard" @click="$router.push('/room')">
 				<img class="SliderRoomImage" src="@/assets/images/rooms/room1.png" alt="room">
 				<div class="Disrcription">
 					<div class="RoomInfo">

@@ -17,7 +17,7 @@ export default {
 		},
 		logOut(state) {
 			state.loginUser = {}
-			localStorage.setItem('user', {})
+			localStorage.setItem('user', null)
 		}
 	},
 	actions: {

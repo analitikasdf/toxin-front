@@ -8,13 +8,16 @@ $ColorLight4:								#b9b9b9;
 $ColorLight5:								#cdcdcd;
 
 $ColorDark1:								#1F2041;
-$ColorDark2:								#4f5072bf;
-$ColorDark3:								#1f204180;
-$ColorDark4:								#1f204140;
-$ColorDark5:								#1f20410d;
+$ColorDark2:								rgba(31, 32, 65, 0.75);
+$ColorDark3:								rgba(31, 33, 65, 0.5);
+$ColorDark4:								rgba(31, 32, 65, 0.25);
+$ColorDark5:								rgba(31, 32, 65, 0.05);
+$ColorDark6:								rgba(0, 0, 0, 0.12);
+$ColorDark7:								rgba(0, 0, 0, 0.6);
 
-$ColorPurple:                               #Bc9cff;
-$ColorGreen:                                #6fcf97;
+$ColorPurple:								#Bc9cff;
+$ColorPurpleLight:							#8BA4F9;
+$ColorGreen:								#6fcf97;
 $ColorInfo:									#3379f9;
 $ColorAlert:								#d09e45;
 $ColorDanger:								#e91f00;

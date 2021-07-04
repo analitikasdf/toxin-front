@@ -3,6 +3,7 @@
 /*	#################### - Developer toxin.ru - ########################	*/
 
 @import './assets/scss/_variables.scss';
+
 * {
 	font-family: Montserrat;
 	box-sizing: border-box;
@@ -16,20 +17,123 @@
 	--toggle-border-on: #BC9CFF;
 	--toggle-border-off: #e5e7eb;
 }
+
+/*	#################### - Developer toxin.ru - ########################	*/
+/*	Modal&Form																*/
+/*	#################### - Developer toxin.ru - ########################	*/
+
+.ModalWrap {
+	display: flex;
+	position: fixed; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%;
+	background-color: $ColorDark7;
+	overflow: auto;
+	&::-webkit-scrollbar { 
+		display: none; 
+	}
+}
+.Form {
+	position: relative;
+	margin: auto;
+	top: 0; left: 0; bottom: 0; right: 0;
+	padding: 40px 30px;
+	display: block;
+	width: 380px;
+	height: auto;
+	border: 1px solid $ColorDark6;
+	background: $ColorWhite;
+	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+	z-index: 0;
+	& > .Woomen {
+		margin-left: 20px;
+	}
+}
+.Title {
+	font-weight: bold;
+	font-size: 24px;
+	text-align: center;
+	margin: 0px auto 20px;
+}
+.SubTitle {
+	font-weight: bold;
+	font-size: 12px;
+	text-align: left;
+	text-transform: uppercase;input:nth-last-child() {
+		margin-left: 10px;
+	}
+}
+.Special {
+	font-weight: normal;
+	font-size: 14px;
+	color: $ColorDark2;
+}
+.RadioBlock {
+	margin: 10px 0;
+	.Woomen {
+		margin-left: 10px;
+	}
+}
+.LogIn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.Account {
+	font-weight: normal;
+	font-size: 14px;
+}
+.Reg {
+	margin-top: 20px;
+}
+.LogIn {
+	margin-top: 30px;
+}
+.Special {
+	margin-top: 15px;
+}
+.CheckboxText {
+	font-size: 14px;
+	color: $ColorDark2;
+	margin-left: 10px;
+}
+.CloseForm {
+	position: absolute;
+	right: -60px;
+	top: 0px;
+	color: $ColorWhite;
+	border: 2px solid $ColorWhite;
+	border-radius: 50%;
+	padding: 3px;
+	width: 40px;
+	height: 40px;
+
+}
+.WrapperCheckbox {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin: 10px 0;
+}
+
+
 .Input {
 	display: block;
 	margin: 10px auto;
 	width: 100%;
 	height: 44px;
-	background: #FFFFFF;
-	border: 1px solid rgba(31, 32, 65, 0.25);
+	background: $ColorWhite;
+	border: 1px solid $ColorDark4;
 	border-radius: 4px;
 	padding-left: 15px;
 	font-weight: normal;
 	font-size: 14px;
-	color: rgba(31, 32, 65, 0.75);
+	color: $ColorDark2;
 	&::placeholder {
-		color: rgba(31, 32, 65, 0.25);
+		color: $ColorDark4;
 	  }
 }
 .Button {
@@ -44,7 +148,7 @@
 	height: 34px;
 	margin: 0px 20px 0px 16px;
 	border-radius: 22px;
-	background: #fff;
+	background: $ColorWhite;
 	text-align: center;
 	color: $ColorPurple;
 	&:before {
@@ -54,7 +158,7 @@
 		bottom: -2px;
 		left: -2px;
 		right: -2px;
-		background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%) !important;
+		background: linear-gradient(180deg, $ColorPurple 0%, $ColorPurpleLight 100%) !important;
 		border-radius: 26px;
 		z-index: -1;
 	}
@@ -70,10 +174,10 @@
 	font-size: 12px;
 	width: 196px;
 	height: 34px;
-	background: linear-gradient(180deg, $ColorPurple 0%, #8BA4F9 100%);
+	background: linear-gradient(180deg, $ColorPurple 0%, $ColorPurpleLight 100%);
 	border-radius: 22px;
 	border: none;
-	color: #fff;
+	color: $ColorWhite;
 	text-transform: uppercase;
 	transition: all .2s;
 	&.Reg {
@@ -85,6 +189,9 @@
 	}
 }
 
+/*	#################### - Developer toxin.ru - ########################	*/
+/*	Checkbox&Radio															*/
+/*	#################### - Developer toxin.ru - ########################	*/
 
  /* для элемента input c type="radio" */
  .custom-radio {
