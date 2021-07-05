@@ -9,55 +9,29 @@
 	<div class="Wrapper Container">
 		<div class="RoomInfo">
 			<div class="RoomDetails">
+				<h3 class="Title">Сведения о номере</h3>
 				<div class="Item">
-					<img class="Icon"/>
+					<img src="@/assets/icons/insert_emoticon.svg" class="Icon"/>
 					<div class="Wrapp">
 						<div class="Title">Комфорт</div>
 						<div class="Descr">Шумопоглощающие стены</div>
 					</div>
 				</div>
 				<div class="Item">
-					<img class="Icon"/>
+					<img src="@/assets/icons/location_city.svg" class="Icon"/>
 					<div class="Wrapp">
 						<div class="Title">Удобство</div>
 						<div class="Descr">Окно в каждой из спален</div>
 					</div>
 				</div>
 				<div class="Item">
-					<img class="Icon"/>
+					<img src="@/assets/icons/whatshot_room.svg" class="Icon"/>
 					<div class="Wrapp">
 						<div class="Title">Уют</div>
 						<div class="Descr">Номер оснащён камином</div>
-			</div>
-			<div class="ImpressionsRoom">
-
-			</div>
-			<div class="Reviews">
-				<div class="Title">Отзывы посетителей номера</div>
-				<div class="NumberReviews">2 отзыва</div>
-				<div class="Item">
-					<div class="User">
-
 					</div>
-					<div class="Review">
-
-					</div>
-				</div>
+				</div>	
 			</div>
-			<div class="Rules">
-				<div class="Title">Правила</div>
-				<div class="Item">Нельзя с питомцами</div>
-				<div class="Item">Без вечеринок и мероприятий</div>
-				<div class="Item">Время прибытия — после 13:00, а выезд до 12:00</div>
-			</div>
-			<div class="Cancellations">
-				<div class="Title">Отмена</div>
-				<div class="Descr">Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.</div>
-			</div>
-		</div>
-		<div class="RoomCalculator">
-
-		</div>	</div>
 			<div class="ImpressionsRoom">
 
 			</div>
@@ -149,9 +123,60 @@ export default {
 	}
 	.Wrapper {
 		display: flex;
+		margin-top: 70px;
 	}
 	.RoomInfo {
 		width: 66%;
+		display: flex;
+		flex-wrap: wrap;
+		.RoomDetails {
+			max-width: 280px;
+			width: 280px;
+			.Title {
+				font-weight: bold;
+				font-size: 19px;
+				text-align: left;
+			}
+			.Item {
+				display: flex;
+				align-items: flex-start;
+				justify-content: flex-start;
+				margin: 20px 0;
+				.Wrapp {
+					display: flex;
+					flex-direction: column; 
+					align-items: flex-start;
+					justify-content: space-between;
+					margin-left: 10px;
+					height: 40px;
+					.Title {
+						font-weight: bold;
+						font-size: 14px;
+						color: $ColorDark2;
+						margin: 0;
+					}
+					.Descr {
+						font-size: 14px;
+						color: $ColorDark2;
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+		.ImpressionsRoom {
+			width: 280px;
+			max-width: 280px;
+			background-color: $ColorAlert;
+		}
+		.Reviews {
+			width: 100%;
+		}
+		.Rules {
+			width: 50%;
+		}
+		.Cancellations {
+			width: 50%;
+		}
 	}
 	.RoomCalculator {
 		width: 34%;
