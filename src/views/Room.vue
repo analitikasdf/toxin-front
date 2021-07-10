@@ -33,7 +33,6 @@
 				</div>	
 			</div>
 			<div class="ImpressionsRoom">
-
 			</div>
 			<div class="Reviews">
 				<div class="Title">Отзывы посетителей номера</div>

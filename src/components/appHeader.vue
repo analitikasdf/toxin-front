@@ -1,35 +1,68 @@
 <template>
-	<nav class="Header">
+	<header class="Header">
 		<div class="Wrapp Container">
-			<img src="../assets/images/LogoHeader.svg" class="Logo" alt="Logo" @click="goToHome">
+			<img
+				src="../assets/images/LogoHeader.svg"
+				class="Logo"
+				alt="Logo"
+				@click="goToHome">
 			<div class="Wrapp">
-				<div class="Menu" >
-				<div class="MenuItem" v-for="link in menu.menu" :key="link">
-					<a
-					class="MenuLink"
-					:class="{'drop': link?.subMenu.length > 0}"
-					@click="dropMenu(link.linkName)"
-					href="#"
-					>{{link.linkName}}</a>
-					<div class="DropMenu" :class="{active: link.isDrop}" ref="target">
-						<a class="DropMenuLink MenuLink" href="" v-for="dropLink in link.subMenu" :key="dropLink">{{dropLink}}</a>
+				<nav class="Menu">
+					<div
+						class="MenuItem"
+						v-for="link in menu.menu" :key="link">
+						<a
+							class="MenuLink"
+							:class="{'drop': link?.subMenu.length > 0}"
+							@click="drop(link)"
+							href="#"
+						>{{link.linkName}}</a>
+						<div
+							v-click-outside="onClickOutside"
+							v-if="link.isDrop"
+							class="DropMenu"
+							
+							ref="target">
+							<a
+								class="DropMenuLink MenuLink"
+								href="" v-for="dropLink in link.subMenu" :key="dropLink">
+								{{dropLink}}
+							</a>
+						</div>
+					</div>
+				</nav>
+				<div class="Authorization">
+					<router-link
+						v-if="!loginUser"
+						to="/login" class="Button"
+						@click.prevent="openModalLogIn">
+						войти
+					</router-link>
+					<router-link
+						v-if="loginUser"
+						to="/" class="Button"
+						@click.prevent="logOut">
+						выйти
+					</router-link>
+					<router-link
+						v-if="!loginUser"
+						to="/checkin"
+						class="ButtonGradient"
+						@click.prevent="openModalCheckin">
+						зарегистрироваться
+					</router-link>
+					<div
+						v-if="loginUser"
+						class="Checked">
+						{{loginUser}}
 					</div>
 				</div>
 			</div>
-			<div class="Authorization">
-				<router-link v-if="!loginUser" to="/login" class="Button" @click.prevent="openModalLogIn">войти</router-link>
-				<router-link v-if="loginUser" to="/" class="Button" @click.prevent="logOut">выйти</router-link>
-				<router-link v-if="!loginUser" to="/checkin" class="ButtonGradient" @click.prevent="openModalCheckin">зарегистрироваться</router-link>
-				<div v-if="loginUser" class="Checked">{{loginUser}}</div>
-			</div>
-			</div>
 		</div>
-	</nav>
+	</header>
 </template>
 
 <script>
-// import { ref } from 'vue'
-// import { onClickOutside } from '@vueuse/core'
 
 export default {
 	emits: {
@@ -38,32 +71,40 @@ export default {
 	},
 	data () {
 		return {
-			menu: [
-				
-			],
+			menu: [],
 			activeDrop: false,
+
+			vcoConfig: {
+			handler: this.handler,
+			middleware: this.middleware,
+			events: ['dblclick', 'click'],
+			// Note: The default value is true, but in case you want to activate / deactivate
+			//       this directive dynamically use this attribute.
+			isActive: true,
+			// Note: The default value is true. See "Detecting Iframe Clicks" section
+			//       to understand why this behaviour is behind a flag.
+			detectIFrame: true,
+			// Note: The default value is false. Sets the capture option for EventTarget addEventListener method.
+			//       Could be useful if some event's handler calls stopPropagation method preventing event bubbling.
+			capture: false
+		}
 		}
 	},
-	// setup() {
-	// 	const target = ref(null)
-
-	// 	onClickOutside(target, (event) => console.log(event))
-		
-	// 	return { target }
-	// },
+	
 	computed: {
 		loginUser() {
 			return this.$store.state.logIn.loginUser.username
 		},
+		
 	},
 	created() {
 		this.$store.dispatch('loadMenu')
 		this.menu = this.$store.state.menu 
 	},
 	methods: {
-		dropMenu(dropMenu) {
+		drop(item) {
 			this.menu.menu.forEach(i => {
-				if (i.isDrop === false && i.linkName === dropMenu) {
+				if (i.isDrop === false && i.linkName === item.linkName) {
 					i.isDrop = true
 				} else {
 					i.isDrop = false
@@ -81,7 +122,13 @@ export default {
 		},
 		goToHome() {
 			this.$router.push('/')
-		}
+		},
+		onClickOutside (event) {
+			console.log('Clicked outside. Event: ', event)
+			this.menu.menu.forEach(i => {
+				i.isDrop = false
+			})
+		},
 	}
 }
 </script>
@@ -148,10 +195,9 @@ export default {
 		border-radius: 10px;
 		box-shadow: 0 0 10px rgba(0,0,0,0.1);
 		background-color: #fff;
-		&.active{
-			display: block;
-			z-index: 9999;
-		}
+		display: block;
+		z-index: 9999;
+		
 
 	}
 	.DropMenuLink {
