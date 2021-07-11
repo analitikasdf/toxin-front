@@ -64,6 +64,7 @@
 
 <script>
 
+
 export default {
 	emits: {
 		openModalCheckIn: null,
@@ -71,23 +72,24 @@ export default {
 	},
 	data () {
 		return {
+			value: 0,
 			menu: [],
 			activeDrop: false,
 
 			vcoConfig: {
-			handler: this.handler,
-			middleware: this.middleware,
-			events: ['dblclick', 'click'],
-			// Note: The default value is true, but in case you want to activate / deactivate
-			//       this directive dynamically use this attribute.
-			isActive: true,
-			// Note: The default value is true. See "Detecting Iframe Clicks" section
-			//       to understand why this behaviour is behind a flag.
-			detectIFrame: true,
-			// Note: The default value is false. Sets the capture option for EventTarget addEventListener method.
-			//       Could be useful if some event's handler calls stopPropagation method preventing event bubbling.
-			capture: false
-		}
+				handler: this.handler,
+				middleware: this.middleware,
+				events: ['dblclick', 'click'],
+				// Note: The default value is true, but in case you want to activate / deactivate
+				//       this directive dynamically use this attribute.
+				isActive: true,
+				// Note: The default value is true. See "Detecting Iframe Clicks" section
+				//       to understand why this behaviour is behind a flag.
+				detectIFrame: true,
+				// Note: The default value is false. Sets the capture option for EventTarget addEventListener method.
+				//       Could be useful if some event's handler calls stopPropagation method preventing event bubbling.
+				capture: false
+			}
 		}
 	},
 	

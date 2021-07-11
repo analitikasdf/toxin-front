@@ -35,15 +35,27 @@
 			<div class="ImpressionsRoom">
 			</div>
 			<div class="Reviews">
-				<div class="Title">Отзывы посетителей номера</div>
-				<div class="NumberReviews">2 отзыва</div>
+				<div class="Header">
+					<div class="Title">Отзывы посетителей номера</div>
+					<div class="NumberReviews">2 отзыва</div>
+				</div>
 				<div class="Item">
-					<div class="User">
-
-					</div>
-					<div class="Review">
-
-					</div>
+						<div class="Avatar">
+							<img src="@/assets/images/users-reviews/user1.png" alt="" class="Img">
+						</div>
+						<div class="User">
+							<div class="Name">Мурад Сарафанов</div>
+							<div class="Date">5 дней назад</div>
+						</div>
+						<div class="Likes">
+							<div class="Box">
+								<img class="Heart" src="@/assets/icons/favorite.svg" alt="">
+								<div class="Number">12</div>
+							</div>
+						</div>
+						<div class="Text">
+							Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.
+						</div>
 				</div>
 			</div>
 			<div class="Rules">
@@ -140,7 +152,13 @@ export default {
 				display: flex;
 				align-items: flex-start;
 				justify-content: flex-start;
-				margin: 20px 0;
+				padding-bottom: 20px;
+				margin: 20px 20px 20px 0px;
+				border-bottom: 1px solid rgba(31, 32, 65, 0.1);
+				&:last-child {
+					border-bottom: 0px solid rgba(31, 32, 65, 0.1);
+					padding-bottom: 0px;
+				}
 				.Wrapp {
 					display: flex;
 					flex-direction: column; 
@@ -169,12 +187,112 @@ export default {
 		}
 		.Reviews {
 			width: 100%;
+			.Header {
+				display: flex;
+				align-items: flex-start;
+				justify-content: space-between;
+				margin: 30px 0px 20px 0px;
+				.Title {
+					margin: 0;
+					font-size: 19px;
+				}
+				.NumberReviews {
+					font-size: 14px;
+					color: $ColorDark3;
+				}
+			}
+			.Item {
+				display: flex;
+				align-items: flex-start;
+				justify-content: flex-start;
+				flex-wrap: wrap;
+				font-weight: normal;
+				font-size: 14px;
+				color: $ColorDark2;
+				.Avatar {
+					width: 10%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+				.User {
+					width: 90%;
+					padding: 0px 20px 20px;
+					.Name {
+						margin: 0px 0px 10px;
+						font-weight: bold;
+					}
+				}
+				.Likes {
+					width: 10%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					.Box {
+						width: 40px;
+						display: flex;
+						align-items: center;
+						justify-content: flex-start;
+						padding: 3px;
+						border: 1px solid $ColorPurple;
+						border-radius: 10px;
+						.Heart {
+
+						}
+						.Number {
+							font-size: 10px;
+							margin-left: 7px;
+						}
+					}
+				}
+				.Text {
+					width: 90%;
+					padding: 0px 20px 20px;
+				}
+			}
 		}
 		.Rules {
 			width: 50%;
+			margin-top: 30px;
+			padding-left: 30px;
+			.Title {
+				text-align: left;
+				font-weight: bold;
+				font-size: 19px;
+			}
+			.Item {
+				position: relative;
+				font-weight: normal;
+				font-size: 14px;
+				line-height: 24px;
+				color: $ColorDark2;
+				&::before {
+					content: '';
+					display: block;
+					position: absolute;
+					top: 6px;
+					left: -16px;
+					width: 10px;
+					height: 10px;
+					background-color: $ColorDark4;
+					border-radius: 50%;
+				}
+			}
 		}
 		.Cancellations {
+			margin-top: 30px;
 			width: 50%;
+			.Title {
+				text-align: left;
+				font-weight: bold;
+				font-size: 19px;
+			}
+			.Descr {
+				font-weight: normal;
+				font-size: 14px;
+				line-height: 24px;
+				color: $ColorDark2;
+			}
 		}
 	}
 	.RoomCalculator {

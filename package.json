@@ -9,6 +9,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@vueform/slider": "^2.0.3",
     "@vueform/toggle": "^2.0.0",
     "@vuelidate/core": "^2.0.0-alpha.19",
     "@vuelidate/validators": "^2.0.0-alpha.17",
@@ -22,6 +23,7 @@
     "serve-static": "^1.14.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
+    "vue-slider-component": "^3.2.13",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {

@@ -8,4 +8,10 @@ import vClickOutside from "click-outside-vue3"
 import 'animate.css'
 import 'normalize.css'
 import '@vueform/toggle/themes/default.css'
-createApp(App).use(store).use(router).use(vClickOutside).mount('#app')
+// import '@vueform/slider/themes/default.css'
+
+createApp(App)
+	.use(store)
+	.use(router)
+	.use(vClickOutside)
+	.mount('#app')
