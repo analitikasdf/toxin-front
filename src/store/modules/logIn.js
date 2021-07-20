@@ -23,7 +23,7 @@ export default {
 	actions: {
 		logInUser({commit}, { email, password }) {
 			axios
-			.post(`${process.env.VUE_APP_BASE_URL}/auth/local`, {
+			.post(`${process.env.VUE_APP_URL}/auth/local`, {
 				identifier: email,
 				password: password,
 			})

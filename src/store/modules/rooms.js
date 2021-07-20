@@ -15,7 +15,7 @@ export default {
 	},
 	actions: {
 		roomsLoad({commit}) {
-			axios.get(`${process.env.VUE_APP_BASE_URL}/rooms`, {
+			axios.get(`${process.env.VUE_APP_URL}/rooms`, {
 			})
 			.then(response => {
 				// Handle success.

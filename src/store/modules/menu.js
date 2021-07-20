@@ -14,7 +14,7 @@ export default {
 			const res = []
 			const menu = 
 			await axios
-			.get(`${process.env.VUE_APP_BASEURL}/menus`)
+			.get(`${process.env.VUE_APP_URL}/menus`)
 			menu.data.forEach(i => {
 					res.push({
 						linkName: i.Name,
