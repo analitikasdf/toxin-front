@@ -2,13 +2,18 @@
 	<div>
 		<h3 class="Title">Номера, которые мы для вас подобрали</h3>
 		<div class="Content">
-			<div class="RoomCard" @click="$router.push('/room')">
+			<div
+				class="RoomCard"
+				@click="$router.push('/room')"
+				v-for="item in $store.state.rooms.roomsList" :key="item.id">
 				<img class="SliderRoomImage" src="@/assets/images/rooms/room1.png" alt="room">
 				<div class="Disrcription">
 					<div class="RoomInfo">
-						<div class="Order">№ 888</div>
-						<div class="Lux">люкс</div>
-						<div class="Price">9 990₽ в сутки</div>
+						<div class="Order">№ {{item.Number}}</div>
+						<div
+							v-show="item.Lux"
+							class="Lux">Lux</div>
+						<div class="Price">{{item.Price}}₽ в сутки</div>
 					</div>
 					<br>
 					<div class="Rating">
@@ -25,18 +30,16 @@
 export default {
 	data() {
 		return {
-			rooms: {
-				room1: {
-					order: '214',
-					lux: false,
-					price: 5185,
-					stars: 5,
-					reviews: 24,
-				}
-			}
+			rooms: ''
 		}
+	},
+	created() {
+		this.$store.dispatch('roomsLoad')
+	},
+	beforeUpdate() {
+		this.rooms = this.$store.state.rooms.roomsList
+		console.log(this.rooms);
 	}
-
 }
 </script>
 
@@ -55,10 +58,14 @@ export default {
 .RoomCard {
 	width: calc(100% / 3 - 12px);
 	height: auto;
-	margin: 20px 0px;
+	margin: 20px 0px 0px;
 	background: #FFFFFF;
 	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 	border-radius: 4px;
+	transition: all .2s ease-out;
+	&:hover {
+		transform: scale(1.025)
+	}
 	.SliderRoomImage {
 		width: 100%;
 	}

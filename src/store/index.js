@@ -3,6 +3,7 @@ import menu from '../store/modules/menu'
 import footer from '../store/modules/footer'
 import checkIn from '../store/modules/checkIn'
 import logIn from '../store/modules/logIn'
+import rooms from '../store/modules/rooms'
 
 export default createStore({
   state: {
@@ -14,6 +15,6 @@ export default createStore({
   getters: {
   },
   modules: {
-    menu, footer, checkIn, logIn
+    menu, footer, checkIn, logIn, rooms
   }
 })
