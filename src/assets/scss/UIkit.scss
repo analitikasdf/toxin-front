@@ -18,6 +18,42 @@
 	--toggle-border-off: #e5e7eb;
 }
 
+.Container {
+	max-width: calc(100% - 280px);
+	margin: 0 auto;
+}
+
+@media (min-width: 320px) and (max-width: 575.98px) {
+
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.Container {
+		max-width: calc(100% - 140px);
+		margin: 0 auto;
+	}
+}
+@media (min-width: 1200px) and (max-width: 1599.98px) {
+	.Container {
+		max-width: calc(100% - 140px);
+		margin: 0 auto;
+	}
+}
+@media (min-width: 600px) and (max-width: 800px) {
+	.Container {
+		max-width: calc(100% - 140px);
+		margin: 0 auto;
+	}
+	}
+
 /*	#################### - Developer toxin.ru - ########################	*/
 /*	Modal&Form																*/
 /*	#################### - Developer toxin.ru - ########################	*/
@@ -256,4 +292,11 @@ a {
 }
 
 // Toggle
+
+
+/*	#################### - Developer toxin.ru - ########################	*/
+/*	Adaptation																*/
+/*	#################### - Developer toxin.ru - ########################	*/
+
+
 

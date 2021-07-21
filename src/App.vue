@@ -69,10 +69,7 @@ export default {
 	@import './assets/scss/UIkit.scss';
 
 
-	.Container {
-		max-width: calc(100% - 280px);
-		margin: 0 auto;
-	}
+	
 	.ImgMain {
 		position: relative;
 		height: 800px;
