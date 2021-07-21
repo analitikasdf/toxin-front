@@ -1,7 +1,10 @@
 <template>
 	<div>
 		<h3 class="Title">Номера, которые мы для вас подобрали</h3>
-		<div class="Content">
+		<div
+			class="Content"
+			v-if="$store.state.rooms.roomsList.length > 0"
+			>
 			<div
 				class="RoomCard"
 				@click="$router.push('/room')"
@@ -23,6 +26,11 @@
 				</div>
 			</div>	
 		</div>
+		<div 
+			v-else
+			class="Load">
+			загрузка
+		</div>
 	</div>
 </template>
 
@@ -30,15 +38,10 @@
 export default {
 	data() {
 		return {
-			rooms: ''
 		}
 	},
 	created() {
 		this.$store.dispatch('roomsLoad')
-	},
-	beforeUpdate() {
-		this.rooms = this.$store.state.rooms.roomsList
-		console.log(this.rooms);
 	}
 }
 </script>
