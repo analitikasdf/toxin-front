@@ -23,37 +23,6 @@
 	margin: 0 auto;
 }
 
-@media (min-width: 320px) and (max-width: 575.98px) {
-
-}
-
-@media (min-width: 576px) and (max-width: 767.98px) {
-
-}
-
-@media (min-width: 768px) and (max-width: 991.98px) {
-	
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-	.Container {
-		max-width: calc(100% - 140px);
-		margin: 0 auto;
-	}
-}
-@media (min-width: 1200px) and (max-width: 1599.98px) {
-	.Container {
-		max-width: calc(100% - 140px);
-		margin: 0 auto;
-	}
-}
-@media (min-width: 600px) and (max-width: 800px) {
-	.Container {
-		max-width: calc(100% - 140px);
-		margin: 0 auto;
-	}
-	}
-
 /*	#################### - Developer toxin.ru - ########################	*/
 /*	Modal&Form																*/
 /*	#################### - Developer toxin.ru - ########################	*/
@@ -71,6 +40,7 @@
 		display: none; 
 	}
 }
+
 .Form {
 	position: relative;
 	margin: auto;
@@ -88,12 +58,14 @@
 		margin-left: 20px;
 	}
 }
+
 .Title {
 	font-weight: bold;
 	font-size: 24px;
 	text-align: center;
 	margin: 0px auto 20px;
 }
+
 .SubTitle {
 	font-weight: bold;
 	font-size: 12px;
@@ -102,40 +74,49 @@
 		margin-left: 10px;
 	}
 }
+
 .Special {
 	font-weight: normal;
 	font-size: 14px;
 	color: $ColorDark2;
 }
+
 .RadioBlock {
 	margin: 10px 0;
 	.Woomen {
 		margin-left: 10px;
 	}
 }
+
 .LogIn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
+
 .Account {
 	font-weight: normal;
 	font-size: 14px;
 }
+
 .Reg {
 	margin-top: 20px;
 }
+
 .LogIn {
 	margin-top: 30px;
 }
+
 .Special {
 	margin-top: 15px;
 }
+
 .CheckboxText {
 	font-size: 14px;
 	color: $ColorDark2;
 	margin-left: 10px;
 }
+
 .CloseForm {
 	position: absolute;
 	right: -60px;
@@ -148,13 +129,13 @@
 	height: 40px;
 
 }
+
 .WrapperCheckbox {
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
 	margin: 10px 0;
 }
-
 
 .Input {
 	display: block;
@@ -172,6 +153,7 @@
 		color: $ColorDark4;
 	  }
 }
+
 .Button {
 	padding: 10px 0;
 	text-transform: uppercase;
@@ -202,6 +184,7 @@
 		opacity: .5;
 	}
 }
+
 .ButtonGradient {
 	text-align: center;
 	padding: 10px 0px;
@@ -230,60 +213,59 @@
 /*	#################### - Developer toxin.ru - ########################	*/
 
  /* для элемента input c type="radio" */
- .custom-radio {
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
+	.custom-radio {
+		position: absolute;
+		z-index: -1;
+		opacity: 0;
   }
   /* для элемента label связанного с .custom-radio */
-  .custom-radio+label {
-    display: inline-flex;
-    align-items: center;
-    user-select: none;
-  }
+	.custom-radio+label {
+		display: inline-flex;
+		align-items: center;
+		user-select: none;
+	}
   /* создание в label псевдоэлемента  before со следующими стилями */
-  .custom-radio+label::before {
-    content: '';
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    flex-shrink: 0;
-    flex-grow: 0;
-    border: 1px solid #adb5bd;
-    border-radius: 50%;
-    margin-right: 0.5em;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 12px 12px;
-  }
+	.custom-radio+label::before {
+		content: '';
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		flex-shrink: 0;
+		flex-grow: 0;
+		border: 1px solid #adb5bd;
+		border-radius: 50%;
+		margin-right: 0.5em;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 12px 12px;
+	}
   /* стили при наведении курсора на радио */
-  .custom-radio:not(:disabled):not(:checked)+label:hover::before {
-    border-color: #b3d7ff;
+	.custom-radio:not(:disabled):not(:checked)+label:hover::before {
+		border-color: #b3d7ff;
   }
   /* стили для активной радиокнопки (при нажатии на неё) */
-  .custom-radio:not(:disabled):active+label::before {
-    background-color: #b3d7ff;
-    border-color: #b3d7ff;
-  }
+	.custom-radio:not(:disabled):active+label::before {
+		background-color: #b3d7ff;
+		border-color: #b3d7ff;
+	}
   /* стили для радиокнопки, находящейся в фокусе */
-  .custom-radio:focus+label::before {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  }
+	.custom-radio:focus+label::before {
+		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+	}
   /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
-  .custom-radio:focus:not(:checked)+label::before {
-    border-color: #80bdff;
-  }
+	.custom-radio:focus:not(:checked)+label::before {
+		border-color: #80bdff;
+	}
   /* стили для радиокнопки, находящейся в состоянии checked */
-  .custom-radio:checked+label::before {
-    border-color: rgba(31, 32, 65, 0.25);
-    background-color: #fff;
-    background-image: url("assets/icons/RadioSvg.svg");
-  }
+	.custom-radio:checked+label::before {
+		border-color: rgba(31, 32, 65, 0.25);
+		background-color: #fff;
+		background-image: url("assets/icons/RadioSvg.svg");
+	}
   /* стили для радиокнопки, находящейся в состоянии disabled */
-  .custom-radio:disabled+label::before {
-    background-color: #e9ecef;
-  }
-
+	.custom-radio:disabled+label::before {
+		background-color: #e9ecef;
+	}
 //   Link
 
 a {
@@ -299,4 +281,36 @@ a {
 /*	#################### - Developer toxin.ru - ########################	*/
 
 
+@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
+	.Container {
+		max-width: calc(100% - 40px);
+		margin: 0 auto;
+	}
+}
 
+@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {
+	.Container {
+		max-width: calc(100% - 40px);
+		margin: 0 auto;
+	}
+}
+
+@media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {
+	.Container {
+		max-width: calc(100% - 40px);
+		margin: 0 auto;
+	}
+}
+
+@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
+	.Container {
+		max-width: calc(100% - 40px);
+		margin: 0 auto;
+	}
+}
+@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {
+	.Container {
+		max-width: calc(100% - 140px);
+		margin: 0 auto;
+	}
+}

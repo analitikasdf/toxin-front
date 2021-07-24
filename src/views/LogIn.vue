@@ -101,8 +101,12 @@ export default {
 }
 </script>
 
-
-<style lang="scss" scouped>
+<style lang="scss" scoped>
+	.ImgMain {
+		position: relative;
+		height: 800px;
+		background: center/cover no-repeat url('../assets/images/bg-main.png');
+	}
 	.ErrorClass {
 		border-color: red;
 	}

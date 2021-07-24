@@ -6,7 +6,12 @@
 				class="Logo"
 				alt="Logo"
 				@click="goToHome">
-			<div class="Wrapp">
+			<button class="hamburger" type="button">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</button>  
+			<div class="Wrapper">
 				<nav class="Menu">
 					<div
 						class="MenuItem"
@@ -136,6 +141,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+	@import "~hamburgers/_sass/hamburgers/hamburgers.scss";
+
+	.hamburger {
+		display: none;
+	}
+
 	.Header {
 		height: 70px;
 		box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
@@ -144,7 +155,10 @@ export default {
 			justify-content: space-between;
 		}
 	}
-	.Wrapp {
+	.Wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
 		.Menu {
 			display: flex;
 			align-items: center;
@@ -217,23 +231,40 @@ export default {
 		color: rgba(31, 32, 65, 0.5);
 	}
 
-	@media (min-width: 320px) and (max-width: 575.98px) {
 
-	}
 
-	@media (min-width: 576px) and (max-width: 767.98px) {
 
-	}
-
-	@media (min-width: 768px) and (max-width: 991.98px) {
-		.MenuLink {
-			font-size: 10px;
+	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
+		.Wrapper {
+			display: none;
+		}
+		.hamburger {
+			display: block;
 		}
 	}
 
-	@media (min-width: 992px) and (max-width: 1199.98px) {
-		.MenuLink {
-			font-size: 12px;
+	@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {
+		.Wrapper {
+			display: none;
 		}
+		.hamburger {
+			display: block;
+		}
+	}
+
+	@media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {
+		.Wrapper {
+			display: none;
+		}
+		.hamburger {
+			display: block;
+		}
+	}
+
+	@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
+
+	}
+	@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {
+		
 	}
 </style>

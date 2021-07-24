@@ -67,12 +67,4 @@ export default {
 	@import './assets/fonts/stylesheet.css';
 	@import './assets/scss/_variables.scss';
 	@import './assets/scss/UIkit.scss';
-
-
-	
-	.ImgMain {
-		position: relative;
-		height: 800px;
-		background: center/cover no-repeat url('./assets/images/bg-main.png');
-	}
 </style>

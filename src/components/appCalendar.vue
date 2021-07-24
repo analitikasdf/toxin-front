@@ -35,9 +35,7 @@ export default {
 		justify-content: space-between;
 		flex-wrap: wrap;
 		padding: 40px 30px;
-		position: absolute;
-		left: 140px;
-		top: 140px;
+
 		width: 380px;
 		background: #FFFFFF;
 		border: 1px solid rgba(0, 0, 0, 0.12);
@@ -78,5 +76,27 @@ export default {
 			position: absolute;
 			background: url('../assets/icons/arrow_forward.svg') center/cover ;
 		}
+	}
+
+	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
+		.Main {
+			left: auto;
+			top: auto;
+		}
+	}
+
+	@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {
+		
+	}
+
+	@media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {
+		
+	}
+
+	@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
+		
+	}
+	@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {
+		
 	}
 </style>

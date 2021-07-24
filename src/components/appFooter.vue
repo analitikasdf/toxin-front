@@ -99,4 +99,30 @@
 	.Line {
 		border-top: 1px solid #E5E5E5;
 	}
+	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
+		.Footer {
+			flex-direction: column;
+		}
+	}
+
+	@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {
+		.Footer {
+			flex-direction: column;
+		}
+	}
+
+	@media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {
+		.Footer {
+			flex-direction: column;
+		}
+	}
+
+	@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
+		.Footer {
+			flex-direction: column;
+		}
+	}
+	@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {
+		
+	}
 </style>
