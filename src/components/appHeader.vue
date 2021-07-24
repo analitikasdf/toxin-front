@@ -6,7 +6,11 @@
 				class="Logo"
 				alt="Logo"
 				@click="goToHome">
-			<button class="hamburger" type="button">
+			<button 
+				class="hamburger hamburger--spring"
+				:class="{'is-active': activeClassHumburher}"
+				type="button"
+				@click="activeClassHumburger">
 				<span class="hamburger-box">
 					<span class="hamburger-inner"></span>
 				</span>
@@ -81,6 +85,8 @@ export default {
 			menu: [],
 			activeDrop: false,
 
+			activeClassHumburher: false,
+
 			vcoConfig: {
 				handler: this.handler,
 				middleware: this.middleware,
@@ -102,7 +108,6 @@ export default {
 		loginUser() {
 			return this.$store.state.logIn.loginUser.username
 		},
-		
 	},
 	created() {
 		this.$store.dispatch('loadMenu')
@@ -136,6 +141,10 @@ export default {
 				i.isDrop = false
 			})
 		},
+		activeClassHumburger() {
+			this.activeClassHumburher = !this.activeClassHumburher
+			this.$emit('openMobileMenu')
+		}
 	}
 }
 </script>
@@ -145,8 +154,10 @@ export default {
 
 	.hamburger {
 		display: none;
+		padding: 15px 0px;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 	}
-
+	
 	.Header {
 		height: 70px;
 		box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
@@ -239,7 +250,7 @@ export default {
 			display: none;
 		}
 		.hamburger {
-			display: block;
+			display: inline-block;
 		}
 	}
 
@@ -248,7 +259,7 @@ export default {
 			display: none;
 		}
 		.hamburger {
-			display: block;
+			display: inline-block;
 		}
 	}
 
@@ -257,7 +268,7 @@ export default {
 			display: none;
 		}
 		.hamburger {
-			display: block;
+			display: inline-block;
 		}
 	}
 

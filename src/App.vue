@@ -1,5 +1,8 @@
 <template>
 	<app-header/>
+	<app-mobile-menu
+		@open-mobile-menu="openMobileMenu"
+	/>
 	<router-view/>
 	<app-footer />
 </template>
@@ -7,6 +10,7 @@
 <script>
 import appHeader from '@/components/appHeader'
 import appFooter from '@/components/appFooter'
+import appMobileMenu from '@/components/appMobileMenu'
 
 
 export default {
@@ -17,6 +21,7 @@ export default {
 	components: {
 		appHeader,
 		appFooter,
+		appMobileMenu,
 		// appCheckIn,
 		// AppLogIn
 	},
