@@ -1,6 +1,7 @@
 <template>
 	<nav
 		class="Menu"
+		:class="{isActive: openMobileMenu}"
 		v-if="menuActive">
 		<div
 			class="MenuItem"
@@ -8,18 +9,20 @@
 			<a
 				class="MenuLink"
 				:class="{'drop': link?.subMenu.length > 0}"
-				@click="drop(link)"
+				@click.stop="drop(link)"
 				href="#"
 			>{{link.linkName}}</a>
 			<div
 				v-click-outside="onClickOutside"
 				v-if="link.isDrop"
 				class="DropMenu"
+				@click.prevent
 				
 				ref="target">
 				<a
 					class="DropMenuLink MenuLink"
-					href="" v-for="dropLink in link.subMenu" :key="dropLink">
+					href="" v-for="dropLink in link.subMenu" :key="dropLink"
+					@click.prevent>
 					{{dropLink}}
 				</a>
 			</div>
@@ -29,11 +32,14 @@
 
 <script>
 export default {
+	props: {
+		openMobileMenu: Boolean,
+	},
 	data() {
 		return {
 			menu: [],
 			activeDrop: false,
-			menuActive: false,
+			menuActive: true,
 
 			activeClassHumburher: false,
 
@@ -76,8 +82,8 @@ export default {
 		activeClassHumburger() {
 			this.activeClassHumburher = !this.activeClassHumburher
 		},
-		openMobileMenu () {
-			console.log("is work");
+		openMenu() {
+			console.log(this.openMobileMenu, 'флаг мобильного меню');
 		}
 	}
 }
@@ -85,19 +91,23 @@ export default {
 
 <style lang="scss" scoped>
 	.Menu {
-		height: 0;
+		display: none;
 		transition: all .2s;
 		overflow: visible;
+		padding: 0 0 10px 0;
+	}
+	.isActive {
+		display: block;
 	}
 	.MenuLink {
 		font-family: Montserrat;
 		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
+		font-weight: bold;
+		font-size: 16px;
 		color: rgba(31, 32, 65, 0.5);
 		text-decoration: none;
 		position: relative;
-		padding: 0px 10px;
+		padding: 5px 10px;
 		&.active {
 			font-weight: bold;
 			color: rgba(31, 32, 65, 0.75);
@@ -120,11 +130,9 @@ export default {
 		position: relative;
 	}
 	.DropMenu {
-		margin: 10px 0px 0px 0px;
 		display: none;
-		padding: 10px 0px;
+		padding: 5px 0px;
 		height: auto;
-		position: absolute;
 		border-radius: 10px;
 		box-shadow: 0 0 10px rgba(0,0,0,0.1);
 		background-color: #fff;

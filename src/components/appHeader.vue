@@ -68,10 +68,14 @@
 				</div>
 			</div>
 		</div>
+		<app-mobile-menu
+			:openMobileMenu="openMobileMenu"
+		/>
 	</header>
 </template>
 
 <script>
+import appMobileMenu from '@/components/appMobileMenu'
 
 
 export default {
@@ -79,11 +83,15 @@ export default {
 		openModalCheckIn: null,
 		ModalLogIn: null,
 	},
+	components: {
+		appMobileMenu,
+	},
 	data () {
 		return {
 			value: 0,
 			menu: [],
 			activeDrop: false,
+			openMobileMenu: false,
 
 			activeClassHumburher: false,
 
@@ -143,7 +151,8 @@ export default {
 		},
 		activeClassHumburger() {
 			this.activeClassHumburher = !this.activeClassHumburher
-			this.$emit('openMobileMenu')
+			this.openMobileMenu = this.activeClassHumburher
+			console.log(this.openMobileMenu, '111');
 		}
 	}
 }
@@ -159,7 +168,7 @@ export default {
 	}
 	
 	.Header {
-		height: 70px;
+		min-height: 70px;
 		box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 		.Wrapp {
 			display: flex;

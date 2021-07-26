@@ -1,8 +1,6 @@
 <template>
 	<app-header/>
-	<app-mobile-menu
-		@open-mobile-menu="openMobileMenu"
-	/>
+	
 	<router-view/>
 	<app-footer />
 </template>
@@ -10,7 +8,6 @@
 <script>
 import appHeader from '@/components/appHeader'
 import appFooter from '@/components/appFooter'
-import appMobileMenu from '@/components/appMobileMenu'
 
 
 export default {
@@ -21,20 +18,10 @@ export default {
 	components: {
 		appHeader,
 		appFooter,
-		appMobileMenu,
 		// appCheckIn,
 		// AppLogIn
 	},
 	methods: {
-		event() {
-			document.addEventListener('click', e => {
-				if (e.target.className !== 'MenuLink' && e.target.className !== 'MenuLink drop') {
-					this.$store.state.menu.menu.forEach(i => {
-						i.isDrop = false
-					})
-				}
-			})
-		},
 		openModalCheckIn() {
 			this.isCloseCheckIn = true;
 		},
