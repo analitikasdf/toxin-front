@@ -6,25 +6,26 @@
 		<div
 			class="MenuItem"
 			v-for="link in menu.menu" :key="link">
-			<a
+			<router-link
+				to=""
 				class="MenuLink"
 				:class="{'drop': link?.subMenu.length > 0}"
-				@click.stop="drop(link)"
-				href="#"
-			>{{link.linkName}}</a>
+				@touchstart.stop="drop(link)"
+				>
+				{{link.linkName}}
+			</router-link>
 			<div
 				v-click-outside="onClickOutside"
-				v-if="link.isDrop"
+				v-if="link.isDrop && link.subMenu.length > 0"
 				class="DropMenu"
-				@click.prevent
-				
 				ref="target">
-				<a
+				<router-link
+				to=""
 					class="DropMenuLink MenuLink"
 					href="" v-for="dropLink in link.subMenu" :key="dropLink"
-					@click.prevent>
+					>
 					{{dropLink}}
-				</a>
+				</router-link>
 			</div>
 		</div>
 	</nav>
@@ -68,15 +69,18 @@ export default {
 			this.menu.menu.forEach(i => {
 				if (i.isDrop === false && i.linkName === item.linkName) {
 					i.isDrop = true
+					console.log('mobilemenu');
 				} else {
 					i.isDrop = false
+					
 				}
 			})
 		},
-		onClickOutside (event) {
-			console.log('Clicked outside. Event: ', event)
+		onClickOutside () {
+			
 			this.menu.menu.forEach(i => {
 				i.isDrop = false
+				console.log('click outside');
 			})
 		},
 		activeClassHumburger() {

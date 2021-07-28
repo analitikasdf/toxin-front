@@ -82,6 +82,7 @@ export default {
 		.Main {
 			left: auto;
 			top: auto;
+			width: 100%;
 		}
 	}
 

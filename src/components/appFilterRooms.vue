@@ -1,6 +1,6 @@
 <template>
 	<div class="Filter">
-		<h3>даты пребывания в отеле</h3>
+		<h3 class="Title">Даты пребывания в отеле</h3>
 		<input type="date" class="Input">
 		<input type="date" class="Input">
 		<h3>гости</h3>
@@ -54,7 +54,6 @@ export default {
 
 <style lang="scss">
 	.Filter	{
-		padding: 20px;
 		.SliderTitle {
 			display: inline-block;
 			width: 50%;
@@ -70,5 +69,25 @@ export default {
 			font-size: 12px;
 			color: $ColorDark3;
 		}
+	}
+	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
+		.Filter {
+			display: none;
+		}
+	}
+
+	@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {
+		
+	}
+
+	@media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {
+		
+	}
+
+	@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
+		
+	}
+	@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {
+		
 	}
 </style>

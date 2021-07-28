@@ -61,7 +61,7 @@ export default {
 .RoomCard {
 	width: calc(100% / 3 - 12px);
 	height: auto;
-	margin: 20px 0px 0px;
+	margin: 0px 0px 20px;
 	background: #FFFFFF;
 	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 	border-radius: 4px;
@@ -71,6 +71,7 @@ export default {
 	}
 	.SliderRoomImage {
 		width: 100%;
+		border-radius: 4px;
 	}
 	.Disrcription{
 		padding: 20px;
@@ -110,6 +111,26 @@ export default {
 			}
 		}
 	}
+}
+
+@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
+	.RoomCard {
+		width: calc(100% / 1 - 12px);
+	}
+}
+
+@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {
+	
+}
+
+@media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {
+	
+}
+
+@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
+	
+}
+@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {
 	
 }
 </style>

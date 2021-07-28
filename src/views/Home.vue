@@ -23,7 +23,9 @@ export default {
 	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
 		.ImgMain {
 			padding: 0px 0px;
+			height: auto;
 		}
+		
 	}
 
 	@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {

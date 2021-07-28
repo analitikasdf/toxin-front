@@ -20,23 +20,25 @@
 					<div
 						class="MenuItem"
 						v-for="link in menu.menu" :key="link">
-						<a
+						<router-link
+						to=""
 							class="MenuLink"
 							:class="{'drop': link?.subMenu.length > 0}"
-							@click="drop(link)"
+							@click.prevent.stop="drop(link)"
 							href="#"
-						>{{link.linkName}}</a>
+						>{{link.linkName}}</router-link>
 						<div
 							v-click-outside="onClickOutside"
 							v-if="link.isDrop"
 							class="DropMenu"
 							
 							ref="target">
-							<a
+							<router-link
+							to=""
 								class="DropMenuLink MenuLink"
 								href="" v-for="dropLink in link.subMenu" :key="dropLink">
 								{{dropLink}}
-							</a>
+							</router-link>
 						</div>
 					</div>
 				</nav>
@@ -126,8 +128,10 @@ export default {
 			this.menu.menu.forEach(i => {
 				if (i.isDrop === false && i.linkName === item.linkName) {
 					i.isDrop = true
+					console.log('bigmenu');
 				} else {
 					i.isDrop = false
+					
 				}
 			})
 		},
@@ -143,8 +147,8 @@ export default {
 		goToHome() {
 			this.$router.push('/')
 		},
-		onClickOutside (event) {
-			console.log('Clicked outside. Event: ', event)
+		onClickOutside () {
+			
 			this.menu.menu.forEach(i => {
 				i.isDrop = false
 			})
@@ -282,7 +286,9 @@ export default {
 	}
 
 	@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
-
+		.MenuLink {
+			font-size: 12px;
+		}
 	}
 	@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {
 		
