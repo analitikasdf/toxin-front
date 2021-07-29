@@ -1,40 +1,41 @@
 <template>
-	<div class="ImgMain"></div>
-	<div class="ModalWrap" @click="closeModal">
-		<form action="" class="Form" @click.stop>
-			<h2 class="Title">Регистрация аккаунта</h2>
-			<input class="Input animate__animated" :class="classObject" type="text" placeholder="Имя" v-model="v$.user.name.$model">
-			<!-- <pre>{{v$.user.$model}}</pre> -->
-			<div v-if="v$.user.name.required.$invalid && v$.user.name.$dirty" class="Valid">поле не может быть пустым</div>
-			<input class="Input animate__animated" :class="classObject" type="text" placeholder="Фамилия" v-model="v$.user.surname.$model">
-			<div v-if="v$.user.surname.required.$invalid && v$.user.surname.$dirty" class="Valid">поле не может быть пустым</div>
-			<div class="RadioBlock">
-				<input class="custom-radio" type="radio" id="man"  name="radio" value="Мужчина" v-model="user.picked">
-				<label for="man">Мужчина</label>
-				<input class="custom-radio Wooman" type="radio" id="woman" name="radio" value="Женщина" v-model="user.picked">
-				<label for="woman" class="Woomen">Женщина</label>
-			</div>
-			<h2 class="SubTitle">дата рождения</h2>
-			<input class="Input" type="date" name="" id="date">
-			<h2 class="SubTitle">данные для входа в сервис</h2>
-			<input class="Input animate__animated" :class="classObject" type="email" name="" id="email" placeholder="Email" v-model="v$.user.email.$model">
-			<div v-if="!v$.user.email.email.$response" class="Valid">укажите почту верно</div>
-			<div v-if="v$.user.email.required.$invalid && v$.user.email.$dirty" class="Valid">поле не может быть пустым</div>
-			<input class="Input animate__animated" :class="classObject" type="password" name="" id="password" placeholder="Пароль" v-model="v$.user.password.$model">
-			<div v-if="v$.user.password.required.$invalid && v$.user.password.$dirty" class="Valid">поле не может быть пустым</div>
-			<div class="WrapperCheckbox">
-				<Toggle v-model="options.value" class="Toggle" :="options"/><span class="CheckboxText">Получать спецпредложения</span>
-			</div>
-			<button class="ButtonGradient Reg" @click.prevent="createUser">зарегистрироваться</button>
-			<div class="LogIn">
-				<p class="Account">Уже есть аккаунт на Toxin</p>
-				<div class="wr">
-					<router-link to="/login" class="Button">войти</router-link>
+	<div class="ImgMain">
+		<div class="ModalWrap" @click="closeModal">
+			<form action="" class="Form" @click.stop>
+				<h2 class="Title">Регистрация аккаунта</h2>
+				<input class="Input animate__animated" :class="classObject" type="text" placeholder="Имя" v-model="v$.user.name.$model">
+				<!-- <pre>{{v$.user.$model}}</pre> -->
+				<div v-if="v$.user.name.required.$invalid && v$.user.name.$dirty" class="Valid">поле не может быть пустым</div>
+				<input class="Input animate__animated" :class="classObject" type="text" placeholder="Фамилия" v-model="v$.user.surname.$model">
+				<div v-if="v$.user.surname.required.$invalid && v$.user.surname.$dirty" class="Valid">поле не может быть пустым</div>
+				<div class="RadioBlock">
+					<input class="custom-radio" type="radio" id="man"  name="radio" value="Мужчина" v-model="user.picked">
+					<label for="man">Мужчина</label>
+					<input class="custom-radio Wooman" type="radio" id="woman" name="radio" value="Женщина" v-model="user.picked">
+					<label for="woman" class="Woomen">Женщина</label>
 				</div>
-			</div>
-			<!-- <img src='' class="CloseForm" /> -->
-			<!-- <img src="@/assets/icons/cancel.svg" @click="closeModal" class="CloseForm" alt=""> -->
-		</form>
+				<h2 class="SubTitle">дата рождения</h2>
+				<input class="Input" type="date" name="" id="date">
+				<h2 class="SubTitle">данные для входа в сервис</h2>
+				<input class="Input animate__animated" :class="classObject" type="email" name="" id="email" placeholder="Email" v-model="v$.user.email.$model">
+				<div v-if="!v$.user.email.email.$response" class="Valid">укажите почту верно</div>
+				<div v-if="v$.user.email.required.$invalid && v$.user.email.$dirty" class="Valid">поле не может быть пустым</div>
+				<input class="Input animate__animated" :class="classObject" type="password" name="" id="password" placeholder="Пароль" v-model="v$.user.password.$model">
+				<div v-if="v$.user.password.required.$invalid && v$.user.password.$dirty" class="Valid">поле не может быть пустым</div>
+				<div class="WrapperCheckbox">
+					<Toggle v-model="options.value" class="Toggle" :="options"/><span class="CheckboxText">Получать спецпредложения</span>
+				</div>
+				<button class="ButtonGradient Reg" @click.prevent="createUser">зарегистрироваться</button>
+				<div class="LogIn">
+					<p class="Account">Уже есть аккаунт на Toxin</p>
+					<div class="wr">
+						<router-link to="/login" class="Button">войти</router-link>
+					</div>
+				</div>
+				<!-- <img src='' class="CloseForm" /> -->
+				<!-- <img src="@/assets/icons/cancel.svg" @click="closeModal" class="CloseForm" alt=""> -->
+			</form>
+		</div>
 	</div>
 </template>
 

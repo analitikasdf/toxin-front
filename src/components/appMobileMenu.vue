@@ -28,6 +28,32 @@
 				</router-link>
 			</div>
 		</div>
+		<div class="Authorization">
+			<router-link
+				v-if="!loginUser"
+				to="/login" class="Button"
+				@click.prevent="openModalLogIn">
+				войти
+			</router-link>
+			<router-link
+				v-if="loginUser"
+				to="/" class="Button"
+				@click.prevent="logOut">
+				выйти
+			</router-link>
+			<router-link
+				v-if="!loginUser"
+				to="/checkin"
+				class="ButtonGradient"
+				@click.prevent="openModalCheckin">
+				зарегистрироваться
+			</router-link>
+			<div
+				v-if="loginUser"
+				class="Checked">
+				{{loginUser}}
+			</div>
+		</div>
 	</nav>
 </template>
 
@@ -88,8 +114,16 @@ export default {
 		},
 		openMenu() {
 			console.log(this.openMobileMenu, 'флаг мобильного меню');
-		}
-	}
+		},
+		logOut() {
+			this.$store.commit('logOut')
+		},
+	},
+	computed: {
+		loginUser() {
+			return this.$store.state.logIn.loginUser.username
+		},
+	},
 }
 </script>
 
@@ -158,5 +192,8 @@ export default {
 	.Checked {
 		font-size: 14px;
 		color: rgba(31, 32, 65, 0.5);
+	}
+	.Authorization {
+		margin: 20px 0;
 	}
 </style>

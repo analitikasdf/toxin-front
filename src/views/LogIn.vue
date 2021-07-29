@@ -1,24 +1,26 @@
 <template>
-	<div class="ImgMain"></div>
-    <div class="ModalWrap" @click="closeModal">
-		<form action="" class="Form" @click.stop>
-			<div v-if="setUserError.data?.error" class="errorLogin">неверное имя пользователя или пароль</div>
-			<h2 class="Title">Войти</h2>
-			<input class="Input animate__animated" :class="classObject" type="email" name="" id="email" placeholder="Email" v-model="user.email">
-			<div v-if="!v$.user.email.email.$response" class="Valid">укажите почту верно</div>
-			<div v-if="v$.user.email.required.$invalid && v$.user.email.$dirty" class="Valid">поле не может быть пустым</div>
-			<input class="Input animate__animated" :class="classObject" type="password" name="" id="password" placeholder="Пароль" v-model="user.password">
-			<div v-if="v$.user.password.required.$invalid && v$.user.password.$dirty" class="Valid">поле не может быть пустым</div>
-			<div class="LogIn">
-				<p class="Account">Уже есть аккаунт на Toxin</p>
-				<div class="wr">
-					<button @click.prevent="logInUser" class="Button">войти</button>
+	<div class="ImgMain">
+		<div class="ModalWrap" @click="closeModal">
+			<form action="" class="Form" @click.stop>
+				<div v-if="setUserError.data?.error" class="errorLogin">неверное имя пользователя или пароль</div>
+				<h2 class="Title">Войти</h2>
+				<input class="Input animate__animated" :class="classObject" type="email" name="" id="email" placeholder="Email" v-model="user.email">
+				<div v-if="!v$.user.email.email.$response" class="Valid">укажите почту верно</div>
+				<div v-if="v$.user.email.required.$invalid && v$.user.email.$dirty" class="Valid">поле не может быть пустым</div>
+				<input class="Input animate__animated" :class="classObject" type="password" name="" id="password" placeholder="Пароль" v-model="user.password">
+				<div v-if="v$.user.password.required.$invalid && v$.user.password.$dirty" class="Valid">поле не может быть пустым</div>
+				<div class="LogIn">
+					<p class="Account">Уже есть аккаунт на Toxin</p>
+					<div class="wr">
+						<button @click.prevent="logInUser" class="Button">войти</button>
+					</div>
 				</div>
-			</div>
-			<!-- <img src='' class="CloseForm" /> -->
-			<!-- <img src="@/assets/icons/cancel.svg" @click="closeModal" class="CloseForm" alt=""> -->
-		</form>
+				<!-- <img src='' class="CloseForm" /> -->
+				<!-- <img src="@/assets/icons/cancel.svg" @click="closeModal" class="CloseForm" alt=""> -->
+			</form>
+		</div>
 	</div>
+	
 </template>
 
 <script>
