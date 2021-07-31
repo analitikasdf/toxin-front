@@ -12,6 +12,10 @@ export default {
 		updateUserError(state, item) {
 			state.loginUserError = item
 		},
+		clearError(state) {
+			state.loginUserError = {}
+			console.log('delete error')
+		},
 		localStorage(state, item) {
 			state.loginUser = item
 		},
@@ -32,6 +36,7 @@ export default {
 				console.log('Well done!');
 				console.log('User profile', response.data.user);
 				console.log('User token', response.data.jwt);
+				console.log('Status', response.status);
 				commit('updateUser',  response.data.user)
 				localStorage.setItem('user', JSON.stringify(response.data.user))
 			})

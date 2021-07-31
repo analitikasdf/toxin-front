@@ -2,6 +2,17 @@
 	<div class="ImgMain">
 		<div class="ModalWrap" @click="closeModal">
 			<form action="" class="Form" @click.stop>
+				<div
+					class="box Loader"
+					v-if="loader && !setUserError.data?.error"
+					>
+					<div class="container">
+						<span class="circle"></span>
+						<span class="circle"></span>
+						<span class="circle"></span>
+						<span class="circle"></span>
+					</div>
+				</div>
 				<div v-if="setUserError.data?.error" class="errorLogin">неверное имя пользователя или пароль</div>
 				<h2 class="Title">Войти</h2>
 				<input class="Input animate__animated" :class="classObject" type="email" name="" id="email" placeholder="Email" v-model="user.email">
@@ -38,6 +49,7 @@ export default {
 				email: '',
 				password: '',
 			},
+			loader: false
 		}
 	},
 	setup () {
@@ -69,16 +81,16 @@ export default {
 		},
 		async logInUser() {
 			await this.v$.$touch()
-
 			if (this.v$.$error) return
 
+			this.loader = true
+			
+			this.$store.commit('clearError')
 			const user = {
 				email: this.user.email,
 				password: this.user.password,
 			}
 			await this.$store.dispatch('logInUser', user)
-
-			
 		},
 	},
 	computed: {
@@ -93,12 +105,16 @@ export default {
 				animate__headShake: this.v$.user.email.$error,
 				ErrorClass: this.v$.user.email.$error
 			}
-		}
+		},
+		
 	},
 	watch: {
 		setUser() {
 			this.closeModal()
-		}
+		},
+		// setUserError() {
+		// 	this.loader = false
+		// },
 	},
 }
 </script>
@@ -115,5 +131,14 @@ export default {
 	.Valid { 
 		font-size: 11px;
 		color: red;
+	}
+	.Form {
+		position: relative;
+	}
+	.Loader {
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform:translate(-50%, -50%);
 	}
 </style>

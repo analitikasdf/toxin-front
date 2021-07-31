@@ -1,7 +1,7 @@
 <template>
-	<app-header/>
-	<router-view/>
-	<app-footer />
+	<app-header v-cloak />
+	<router-view v-cloak />
+	<app-footer v-cloak />
 </template>
 
 <script>

@@ -26,11 +26,19 @@
 				</div>
 			</div>	
 		</div>
-		<div 
+		
+		<div
+			class="box Loader"
 			v-else
-			class="Load">
-			загрузка
+			>
+			<div class="container">
+				<span class="circle"></span>
+				<span class="circle"></span>
+				<span class="circle"></span>
+				<span class="circle"></span>
+			</div>
 		</div>
+		
 	</div>
 </template>
 
@@ -111,6 +119,14 @@ export default {
 			}
 		}
 	}
+}
+
+.Loader{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
 }
 
 @media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {

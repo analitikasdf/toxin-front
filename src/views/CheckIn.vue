@@ -2,6 +2,7 @@
 	<div class="ImgMain">
 		<div class="ModalWrap" @click="closeModal">
 			<form action="" class="Form" @click.stop>
+				<p>{{userCheck}}</p>
 				<h2 class="Title">Регистрация аккаунта</h2>
 				<input class="Input animate__animated" :class="classObject" type="text" placeholder="Имя" v-model="v$.user.name.$model">
 				<!-- <pre>{{v$.user.$model}}</pre> -->
@@ -99,7 +100,7 @@ export default {
 				this.$store.dispatch('createNewUser', newUser)
 
 				console.log(newUser);
-		},
+			},
 		closeModal() {
 			this.$router.push('/')
 		}
@@ -110,6 +111,14 @@ export default {
 				animate__headShake: this.v$.user.email.$error,
 				ErrorClass: this.v$.user.email.$error
 			}
+		},
+		userCheck() {
+			return  this.$store.state.checkIn.user
+		}
+	},
+	watch: {
+		userCheck() {
+			this.$router.push('/')
 		}
 	}
 }
