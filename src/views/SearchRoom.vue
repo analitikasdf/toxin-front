@@ -1,9 +1,15 @@
 <template>
 	<div class="Container">
 		<div class="Wrapp">
-			<app-filter-rooms class="Filter"/>
-			<app-rooms-list class="List"/>
+			<app-filter-rooms class="Filter" @minValue="onMinValue" @maxValue="onMaxValue"/>
+			<app-rooms-list class="List" :roomsList="filteredRooms"/>
 		</div>
+
+		<button
+			class="Button"
+			@click="hendlerFilter"
+			>подобрать
+		</button>
 	</div>
 </template>
 
@@ -13,7 +19,52 @@ import appFilterRooms from '@/components/appFilterRooms.vue'
 
 export default {
 	components: { appRoomsList, appFilterRooms },
+	data() {
+		return {
+			roomsMinPrice: '',
+			roomsMaxPrice: '',
+			filteredRooms: [],
+		}			
+	},
+	methods: {
+		onMinValue(data) {
+			console.log('child component said login', data)
+			this.roomsMinPrice = data
+			console.log(this.roomsMinPrice, "iiiii");
+		},
+		onMaxValue(data) {
+			console.log('child component said login', data)
+			this.roomsMaxPrice = data
+			console.log(this.roomsMinPrice, "iiiiipppppp");
+		},
+		hendlerFilter() {
+			// console.log(123456);
+			// console.log(Object.keys(this.loadRooms.target), 'loadRooms');
+			// console.log(this.filteredRooms, 'filteredRooms');
+			// console.log(this.loadRooms, 'ls')
+			// this.filteredRooms = this.loadRooms.map(i => {
+			// 	i.Price > this.on
+			let vm = this
+			this.filteredRooms = this.loadRooms.filter(i => {
+				return i.Price >= vm.roomsMinPrice && i.Price <= vm.roomsMaxPrice
+			})
+			console.log(this.filteredRooms, 'filteredRooms');
+			
 		}
+	},
+	created() {
+		this.$store.dispatch('roomsLoad')
+	},
+	computed: {
+		loadRooms() {
+			return this.$store.state.rooms.roomsList
+		},
+		on() {
+			return this.MinPrice
+		},
+		
+	},
+}
 </script>
 
 <style lang="scss" scoped>

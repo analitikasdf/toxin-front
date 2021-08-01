@@ -3,12 +3,12 @@
 		<h3 class="Title">Номера, которые мы для вас подобрали</h3>
 		<div
 			class="Content"
-			v-if="$store.state.rooms.roomsList.length > 0"
+			v-if="roomsList.length > 0"
 			>
 			<div
 				class="RoomCard"
 				@click="$router.push('/room')"
-				v-for="item in $store.state.rooms.roomsList" :key="item.id">
+				v-for="item in roomsList" :key="item.id">
 				<img class="SliderRoomImage" src="@/assets/images/rooms/room1.png" alt="room">
 				<div class="Disrcription">
 					<div class="RoomInfo">
@@ -38,18 +38,21 @@
 				<span class="circle"></span>
 			</div>
 		</div>
-		
 	</div>
 </template>
 
 <script>
 export default {
+	props: ['roomsList'],
 	data() {
 		return {
 		}
 	},
 	created() {
-		this.$store.dispatch('roomsLoad')
+	},
+	computed: {
+	},
+	methods: {
 	}
 }
 </script>

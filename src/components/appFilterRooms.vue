@@ -32,6 +32,9 @@ export default {
 	components: {
 		Slider,
 	},
+	emits: {
+		minValue: null
+	},
 	data () {
 		return {
 			value: [0, 30000],
@@ -49,6 +52,16 @@ export default {
 			return this.value[1].toLocaleString()
 		}
 	},
+	watch: {
+		sliderMinValue() {
+			this.$emit('minValue', this.value[0]);
+
+		},
+		sliderMaxValue() {
+			this.$emit('maxValue', this.value[1]);
+
+		}
+	}
 }
 </script>
 
