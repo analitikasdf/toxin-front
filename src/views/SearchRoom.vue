@@ -1,15 +1,14 @@
 <template>
 	<div class="Container">
 		<div class="Wrapp">
-			<app-filter-rooms class="Filter" @minValue="onMinValue" @maxValue="onMaxValue"/>
-			<app-rooms-list class="List" :roomsList="filteredRooms"/>
+			<app-filter-rooms
+				class="Filter"
+				:roomsPriceMax="roomsPriceMax"
+				:roomsPriceMin="roomsPriceMin"
+				@minValue="onMinValue"
+				@maxValue="onMaxValue"/>
+			<app-rooms-list class="List" :roomsList="loadRooms"/>
 		</div>
-
-		<button
-			class="Button"
-			@click="hendlerFilter"
-			>подобрать
-		</button>
 	</div>
 </template>
 
@@ -21,43 +20,38 @@ export default {
 	components: { appRoomsList, appFilterRooms },
 	data() {
 		return {
-			roomsMinPrice: '',
-			roomsMaxPrice: '',
+			roomsMinPrice: 0,
+			roomsMaxPrice: 30000,
 			filteredRooms: [],
 		}			
 	},
 	methods: {
-		onMinValue(data) {
-			console.log('child component said login', data)
-			this.roomsMinPrice = data
-			console.log(this.roomsMinPrice, "iiiii");
-		},
-		onMaxValue(data) {
-			console.log('child component said login', data)
-			this.roomsMaxPrice = data
-			console.log(this.roomsMinPrice, "iiiiipppppp");
-		},
-		hendlerFilter() {
-			// console.log(123456);
-			// console.log(Object.keys(this.loadRooms.target), 'loadRooms');
-			// console.log(this.filteredRooms, 'filteredRooms');
-			// console.log(this.loadRooms, 'ls')
-			// this.filteredRooms = this.loadRooms.map(i => {
-			// 	i.Price > this.on
-			let vm = this
-			this.filteredRooms = this.loadRooms.filter(i => {
-				return i.Price >= vm.roomsMinPrice && i.Price <= vm.roomsMaxPrice
-			})
-			console.log(this.filteredRooms, 'filteredRooms');
-			
-		}
+		// onMinValue(data) {
+		// 	this.roomsMinPrice = data
+		// },
+		// onMaxValue(data) {
+		// 	this.roomsMaxPrice = data
+		// }
 	},
-	created() {
-		this.$store.dispatch('roomsLoad')
+	mounted() {
+		const item = {}
+			item.min = this.roomsMinPrice
+			item.max = this.roomsMaxPrice
+			this.$store.dispatch('roomsLoad', item)
 	},
 	computed: {
 		loadRooms() {
 			return this.$store.state.rooms.roomsList
+		},
+		roomsPriceMax() {
+			return Math.max.apply(Math, this.$store.state.rooms.roomsList.map(i => {
+				return i.Price
+			}))
+		},
+		roomsPriceMin() {
+			return Math.min.apply(Math, this.$store.state.rooms.roomsList.map(i => {
+				return i.Price
+			}))
 		},
 		on() {
 			return this.MinPrice

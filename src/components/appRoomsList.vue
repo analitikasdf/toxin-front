@@ -43,7 +43,9 @@
 
 <script>
 export default {
-	props: ['roomsList'],
+	props: {
+		roomsList: null,
+	},
 	data() {
 		return {
 		}
@@ -66,13 +68,13 @@ export default {
 	display: flex;
 	width: 100%;
 	align-items: flex-start;
-	justify-content: space-between;
+	justify-content: flex-start;
 	flex-wrap: wrap;
 }
 .RoomCard {
 	width: calc(100% / 3 - 12px);
 	height: auto;
-	margin: 0px 0px 20px;
+	margin: 0px 0px 20px 12px;
 	background: #FFFFFF;
 	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 	border-radius: 4px;

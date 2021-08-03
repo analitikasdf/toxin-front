@@ -4,7 +4,7 @@
 		<input type="date" class="Input">
 		<input type="date" class="Input">
 		<h3>гости</h3>
-		<input type="number" class="Input">
+		<input type="number" class="Input" v-model="guests">
 		<h3 class="SliderTitle">диапазон цены</h3>
 		<div class="Wrapp">
 			<div class="MinVal">{{sliderMinValue}}&#8381;</div>
@@ -21,6 +21,11 @@
 		<h3>доступность</h3>
 		<h3>удобства номера</h3>
 		<h3>дополнительные удобства</h3>
+		<button
+			class="Button"
+			@click="hendlerFilter"
+			>подобрать
+		</button>
 	</div>
 </template>
 
@@ -33,18 +38,31 @@ export default {
 		Slider,
 	},
 	emits: {
-		minValue: null
+		minValue: null,
+		maxValue: null,
+	},
+	props: {
+		roomsPriceMax: null,
+		roomsPriceMin: null,
 	},
 	data () {
 		return {
 			value: [0, 30000],
 			tooltips: false,
+			guests: 1
+		}
+	},
+	methods: {
+		hendlerFilter() {
+			const item = {}
+			item.min = this.value[0]
+			item.max = this.value[1]
+			item.guests = this.guests
+			this.$store.dispatch('roomsLoad', item)
+			console.log(item);
 		}
 	},
 	computed: {
-		log() {
-			return this.value;
-		},
 		sliderMinValue() {
 			return this.value[0].toLocaleString()
 		},
@@ -52,6 +70,7 @@ export default {
 			return this.value[1].toLocaleString()
 		}
 	},
+	
 	watch: {
 		sliderMinValue() {
 			this.$emit('minValue', this.value[0]);
@@ -61,6 +80,9 @@ export default {
 			this.$emit('maxValue', this.value[1]);
 
 		}
+	},
+	mounted() {
+		this.hendlerFilter()	
 	}
 }
 </script>
