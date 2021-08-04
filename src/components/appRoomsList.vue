@@ -29,7 +29,7 @@
 		
 		<div
 			class="box Loader"
-			v-else
+			v-if="roomsList.length === 0 & noRes === false"
 			>
 			<div class="container">
 				<span class="circle"></span>
@@ -38,6 +38,14 @@
 				<span class="circle"></span>
 			</div>
 		</div>
+
+		<div
+			class="NoRes"
+			v-if="roomsList.length === 0 & noRes === true"
+			>
+			<span> ничего не найдено, поменяйте условия поиска!</span>
+		</div>
+		
 	</div>
 </template>
 
@@ -53,6 +61,9 @@ export default {
 	created() {
 	},
 	computed: {
+		noRes() {
+			return this.$store.state.rooms.noRes
+		}
 	},
 	methods: {
 	}
@@ -68,13 +79,13 @@ export default {
 	display: flex;
 	width: 100%;
 	align-items: flex-start;
-	justify-content: flex-start;
+	justify-content: space-around;
 	flex-wrap: wrap;
 }
 .RoomCard {
 	width: calc(100% / 3 - 12px);
 	height: auto;
-	margin: 0px 0px 20px 12px;
+	margin: 0px 0px 20px;
 	background: #FFFFFF;
 	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 	border-radius: 4px;
@@ -132,6 +143,12 @@ export default {
 	justify-content: center;
 	width: 100%;
 	height: 100%;
+}
+
+.NoRes {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 @media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {

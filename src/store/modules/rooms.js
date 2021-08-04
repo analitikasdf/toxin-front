@@ -2,26 +2,34 @@ import axios from 'axios'
 
 export default {
 	state: {
-		roomsList: []
+		roomsList: [],
+		noRes: false
 	},
 	mutations: {
 		setRooms(state, item) {
+			state.noRes = false
 			state.roomsList = item
 			state.roomsList.map(item => {
 				let validKeys = [ 'Number', 'Lux', 'Price' ]
 				Object.keys(item).forEach((key) => validKeys.includes(key) || delete item[key])
 			})
+		},
+		noResultat(state) {
+			state.roomsList = []
+			state.noRes = true
 		}
 	},
 	
 	actions: {
-		roomsLoad({commit}, {min, max, guests}) {
-			axios.get(`${process.env.VUE_APP_URL}/rooms?Price_gte=${min}&Price_lte=${max}&Guests_gte=${guests}`, {
+		roomsLoad({commit}, {min, max, guests, lux}) {
+			axios.get(`${process.env.VUE_APP_URL}/rooms?Price_gte=${min}&Price_lte=${max}&Guests_gte=${guests}&Lux=${lux}`, {
 			})
 			.then(response => {
 				// Handle success.
 				// console.log(response.data);
-				commit('setRooms', response.data)
+				if(response.data.length === 0) {
+					commit('noResultat')
+				} else commit('setRooms', response.data)
 			})
 			.catch(error => {
 				// Handle error.

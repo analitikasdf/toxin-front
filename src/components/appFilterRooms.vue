@@ -17,10 +17,11 @@
 			:tooltips="tooltips"
 			:max="30000"
 		/>
-		<h3>правила дома</h3>
-		<h3>доступность</h3>
-		<h3>удобства номера</h3>
-		<h3>дополнительные удобства</h3>
+		<label class="custom-checkbox">
+			<input type="checkbox" value="value-1" v-model="checked">
+			<span class="Title">Lux</span>
+		</label>
+
 		<button
 			class="Button"
 			@click="hendlerFilter"
@@ -49,7 +50,8 @@ export default {
 		return {
 			value: [0, 30000],
 			tooltips: false,
-			guests: 1
+			guests: 1,
+			checked:  false,
 		}
 	},
 	methods: {
@@ -58,6 +60,7 @@ export default {
 			item.min = this.value[0]
 			item.max = this.value[1]
 			item.guests = this.guests
+			item.lux = this.checked
 			this.$store.dispatch('roomsLoad', item)
 			console.log(item);
 		}
@@ -89,6 +92,9 @@ export default {
 
 <style lang="scss">
 	.Filter	{
+		.Slider {
+			padding: 0 8px;
+		}
 		.SliderTitle {
 			display: inline-block;
 			width: 50%;
@@ -103,6 +109,17 @@ export default {
 			padding: 0 5px;
 			font-size: 12px;
 			color: $ColorDark3;
+		}
+		.Button {
+			display: block;
+			margin: 0;
+		}
+		.custom-checkbox {
+			display: block;
+			margin: 40px 0px 20px;
+			.Title{
+				font-size: 18px;
+			}
 		}
 	}
 	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
