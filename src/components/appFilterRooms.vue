@@ -1,6 +1,6 @@
 <template>
 	<button
-		class="Button"
+		class="Button F"
 		@click.prevent = "hideFilter"
 		>фильтр
 	</button>
@@ -106,7 +106,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.Button {
 		display: block;
 		margin: 0 0 20px;
@@ -164,9 +164,19 @@ export default {
 	}  
 
 	@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
-		
+		.F {
+			display: none;
+		}
+		.Filter {
+			display: block;
+		}
 	}
 	@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {
-		
+		.F {
+			display: none;
+		}
+		.Filter {
+			display: block;
+		}
 	}
 </style>
