@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<h3 class="Title">Номера, которые мы для вас подобрали</h3>
+		
 		<div
 			class="Content"
 			v-if="roomsList.length > 0"
@@ -26,7 +27,10 @@
 				</div>
 			</div>	
 		</div>
-		
+		<div
+			class="ButtonGradient"
+			v-if="roomsList.length > 0"
+			@click="loadMoreRooms">загрузить еще</div>
 		<div
 			class="box Loader"
 			v-if="roomsList.length === 0 & noRes === false"
@@ -54,6 +58,9 @@ export default {
 	props: {
 		roomsList: null,
 	},
+	emits: {
+		loadMoreRooms: null,
+	},
 	data() {
 		return {
 		}
@@ -66,6 +73,9 @@ export default {
 		}
 	},
 	methods: {
+		loadMoreRooms() {
+			this.$emit('loadMoreRooms')
+		}
 	}
 }
 </script>
@@ -125,14 +135,12 @@ export default {
 		.Rating {
 			display: flex;
 			justify-content: space-between;
-			.Stars {
-
-			}
 			.Reviews {
 				font-weight: bold;
 				font-size: 14px;
 				color: rgba(31, 32, 65, 0.5);
 			}
+
 		}
 	}
 }
@@ -149,6 +157,12 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.Button {
+	margin: 0 0 40px 0;
+}
+.ButtonGradient {
+	width: 100%;
 }
 
 @media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {

@@ -1,5 +1,12 @@
 <template>
-	<div class="Filter">
+	<button
+		class="Button"
+		@click.prevent = "hideFilter"
+		>фильтр
+	</button>
+	<div
+		class="Filter"
+		:class="{HideFilter: activeHideFilter}">
 		<h3 class="Title">Даты пребывания в отеле</h3>
 		<input type="date" class="Input">
 		<input type="date" class="Input">
@@ -22,11 +29,13 @@
 			<span class="Title">Lux</span>
 		</label>
 
-		<button
-			class="Button"
-			@click="hendlerFilter"
-			>подобрать
-		</button>
+		<div class="WrappButton">
+			<button
+				class="Button"
+				@click="hendlerFilter"
+				>подобрать
+			</button>
+		</div>
 	</div>
 </template>
 
@@ -45,6 +54,7 @@ export default {
 	props: {
 		roomsPriceMax: null,
 		roomsPriceMin: null,
+		moreRooms: null
 	},
 	data () {
 		return {
@@ -52,6 +62,7 @@ export default {
 			tooltips: false,
 			guests: 1,
 			checked:  false,
+			activeHideFilter: true
 		}
 	},
 	methods: {
@@ -61,8 +72,13 @@ export default {
 			item.max = this.value[1]
 			item.guests = this.guests
 			item.lux = this.checked
+			item.moreRooms = this.moreRooms
+			this.$store.commit('clearState')
 			this.$store.dispatch('roomsLoad', item)
 			console.log(item);
+		},
+		hideFilter() {
+			this.activeHideFilter = !this.activeHideFilter
 		}
 	},
 	computed: {
@@ -91,7 +107,12 @@ export default {
 </script>
 
 <style lang="scss">
+	.Button {
+		display: block;
+		margin: 0 0 20px;
+	}
 	.Filter	{
+		margin: 0 0 20px 0;
 		.Slider {
 			padding: 0 8px;
 		}
@@ -113,6 +134,7 @@ export default {
 		.Button {
 			display: block;
 			margin: 0;
+			width: 35%;
 		}
 		.custom-checkbox {
 			display: block;
@@ -121,11 +143,16 @@ export default {
 				font-size: 18px;
 			}
 		}
+		.WrappButton {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+		}
+	}
+	.HideFilter {
+		display: none;
 	}
 	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
-		.Filter {
-			display: none;
-		}
 	}
 
 	@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {
@@ -134,7 +161,7 @@ export default {
 
 	@media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {
 		
-	}
+	}  
 
 	@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
 		

@@ -7,6 +7,8 @@ export default {
 	},
 	mutations: {
 		setRooms(state, item) {
+
+			
 			state.noRes = false
 			state.roomsList = item
 			state.roomsList.map(item => {
@@ -17,12 +19,15 @@ export default {
 		noResultat(state) {
 			state.roomsList = []
 			state.noRes = true
+		},
+		clearState(state) {
+			state.roomsList = []
 		}
 	},
 	
 	actions: {
-		roomsLoad({commit}, {min, max, guests, lux}) {
-			axios.get(`${process.env.VUE_APP_URL}/rooms?Price_gte=${min}&Price_lte=${max}&Guests_gte=${guests}&Lux=${lux}`, {
+		roomsLoad({commit,}, {min, max, guests, lux}) {
+			axios.get(`${process.env.VUE_APP_URL}/rooms?Price_gte=${min}&Price_lte=${max}&Guests_gte=${guests}${lux ? `&Lux=${lux}` : ""}`, {
 			})
 			.then(response => {
 				// Handle success.

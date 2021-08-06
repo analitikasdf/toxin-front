@@ -5,9 +5,15 @@
 				class="Filter"
 				:roomsPriceMax="roomsPriceMax"
 				:roomsPriceMin="roomsPriceMin"
+				:moreRooms="moreRooms"
 				@minValue="onMinValue"
-				@maxValue="onMaxValue"/>
-			<app-rooms-list class="List" :roomsList="loadRooms"/>
+				@maxValue="onMaxValue"
+			/>
+			<app-rooms-list
+				class="List"
+				:roomsList="loadRooms"
+				@loadMoreRooms="onLoadMoreRooms"
+			/>
 		</div>
 	</div>
 </template>
@@ -23,6 +29,7 @@ export default {
 			roomsMinPrice: 0,
 			roomsMaxPrice: 30000,
 			filteredRooms: [],
+			moreRooms: 5,
 		}			
 	},
 	methods: {
@@ -32,6 +39,10 @@ export default {
 		// onMaxValue(data) {
 		// 	this.roomsMaxPrice = data
 		// }
+		onLoadMoreRooms() {
+			this.moreRooms = this.moreRooms + 5
+			console.log(this.moreRooms);
+		}
 	},
 	mounted() {
 		const item = {}
@@ -77,8 +88,10 @@ export default {
 	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
 		.Wrapp {
 			display: flex;
+			flex-direction: column;
 			.Filter {
-				display: none;
+				width: 100%;
+				padding: 0px 0px 30px;
 			}
 			.List {
 				width: 100%;
