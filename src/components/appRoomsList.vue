@@ -8,7 +8,7 @@
 			>
 			<div
 				class="RoomCard"
-				@click="$router.push('/room')"
+				@click="$router.push({ path: '/room', query: { rooms_id: item.Number } })"
 				v-for="item in roomsList" :key="item.id">
 				<img class="SliderRoomImage" src="@/assets/images/rooms/room1.png" alt="room">
 				<div class="Disrcription">
