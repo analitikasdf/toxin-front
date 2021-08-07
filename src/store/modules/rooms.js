@@ -26,8 +26,8 @@ export default {
 	},
 	
 	actions: {
-		roomsLoad({commit,}, {min, max, guests, lux}) {
-			axios.get(`${process.env.VUE_APP_URL}/rooms?Price_gte=${min}&Price_lte=${max}&Guests_gte=${guests}${lux ? `&Lux=${lux}` : ""}`, {
+		roomsLoad({commit,}, {min, max, guests, lux, moreRooms}) {
+			axios.get(`${process.env.VUE_APP_URL}/rooms?Price_gte=${min}&Price_lte=${max}&Guests_gte=${guests}${lux ? `&Lux=${lux}` : ""}&_limit=${moreRooms}`, {
 			})
 			.then(response => {
 				// Handle success.

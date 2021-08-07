@@ -72,11 +72,11 @@
 				</div>
 			</div>	
 		</div>
-		<!-- <div
+		<div
 			class="ButtonGradient"
 			v-if="roomsList.length > 0"
 			@click="loadMoreRooms">загрузить еще
-		</div> -->
+		</div>
 		<div
 			class="box Loader"
 			v-if="roomsList.length === 0 & noRes === false"

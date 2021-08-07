@@ -36,6 +36,7 @@
 				>подобрать
 			</button>
 		</div>
+		{{router}}
 	</div>
 </template>
 
@@ -75,7 +76,8 @@ export default {
 			item.moreRooms = this.moreRooms
 			this.$store.commit('clearState')
 			this.$store.dispatch('roomsLoad', item)
-			console.log(item);
+			this.$router.push({ path: this.$route.path, query: item })
+			console.log(this.$route.path, 'path');
 		},
 		hideFilter() {
 			this.activeHideFilter = !this.activeHideFilter

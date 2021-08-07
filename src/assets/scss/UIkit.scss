@@ -48,7 +48,7 @@
 	top: 0; left: 0; bottom: 0; right: 0;
 	padding: 40px 30px;
 	display: block;
-	width: 380px;
+	max-width: 380px;
 	height: auto;
 	border: 1px solid $ColorDark6;
 	background: $ColorWhite;

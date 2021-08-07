@@ -389,6 +389,9 @@ export default {
 		.Wrapper {
 			flex-direction: column;
 		}
+		.Form {
+			max-width: 380px;
+		}
 		.RoomInfo {
 			width: 100%;
 			.Cancellations {
@@ -397,6 +400,10 @@ export default {
 			.Rules {
 				width: 100%;
 			}
+		}
+		.RoomCalculator {
+			margin: 40px 0;
+			width: 100%;
 		}
 	}
 
@@ -413,6 +420,10 @@ export default {
 				width: 100%;
 			}
 		}
+		.RoomCalculator {
+			margin: 40px 0;
+			width: 100%;
+		}
 	}
 
 	@media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {
@@ -427,6 +438,10 @@ export default {
 			.Rules {
 				width: 100%;
 			}
+		}
+		.RoomCalculator {
+			margin: 40px 0;
+			width: 100%;
 		}
 	}
 

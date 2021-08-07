@@ -29,7 +29,7 @@ export default {
 			roomsMinPrice: 0,
 			roomsMaxPrice: 30000,
 			filteredRooms: [],
-			moreRooms: 5,
+			moreRooms: 6,
 		}			
 	},
 	methods: {
@@ -40,7 +40,7 @@ export default {
 		// 	this.roomsMaxPrice = data
 		// }
 		onLoadMoreRooms() {
-			this.moreRooms = this.moreRooms + 5
+			this.moreRooms = this.moreRooms + 6
 			console.log(this.moreRooms);
 		}
 	},
