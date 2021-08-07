@@ -101,6 +101,7 @@
 	}
 	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
 		.Footer {
+			padding: 50px 0;
 			flex-direction: column;
 		}
 	}

@@ -1,5 +1,6 @@
 <template>
 	<div class="ImgMain">
+		<img src="@/assets/images/bg-main.png" alt="" class="imgMini">
 		<app-calendar />
 	</div>
 </template>
@@ -20,12 +21,18 @@ export default {
 		height: 800px;
 		background: center/cover no-repeat url('../assets/images/bg-main.png');
 	}
+	.imgMini {
+		display: none;
+		width: 100%;
+	}
 	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
 		.ImgMain {
 			padding: 0px 0px;
 			height: auto;
 		}
-		
+		.imgMini {
+			display: block;
+		}
 	}
 
 	@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {

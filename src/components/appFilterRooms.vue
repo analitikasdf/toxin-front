@@ -1,6 +1,6 @@
 <template>
 	<button
-		class="Button F"
+		class="Button FilterButton"
 		@click.prevent = "hideFilter"
 		>фильтр
 	</button>
@@ -98,6 +98,9 @@ export default {
 		sliderMaxValue() {
 			this.$emit('maxValue', this.value[1]);
 
+		},
+		moreRooms () {
+			this.hendlerFilter()
 		}
 	},
 	mounted() {
@@ -110,6 +113,9 @@ export default {
 	.Button {
 		display: block;
 		margin: 0 0 20px;
+	}
+	.FilterButton {
+		display: none;
 	}
 	.Filter	{
 		margin: 0 0 20px 0;
@@ -149,34 +155,40 @@ export default {
 			justify-content: space-between;
 		}
 	}
-	.HideFilter {
-		display: none;
-	}
+		
 	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
+		.HideFilter {
+			display: none;
+		}
+		.FilterButton {
+			display: block;
+		}
 	}
 
 	@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {
+		.HideFilter {
+			display: none;
+		}
 		
+		.FilterButton {
+			display: block;
+		}
 	}
 
 	@media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {
-		
+		.Filter {
+			padding: 0 20px;
+		}
 	}  
 
 	@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
-		.F {
-			display: none;
-		}
 		.Filter {
-			display: block;
+			padding: 0 20px;
 		}
 	}
 	@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {
-		.F {
-			display: none;
-		}
 		.Filter {
-			display: block;
+			padding: 0 20px;
 		}
 	}
 </style>

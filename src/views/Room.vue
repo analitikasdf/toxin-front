@@ -1,10 +1,10 @@
 <template>
 	<div class="Gallery">
 		<img src="../assets/images/rooms/imageRoom1.png" alt="imageRoom1" class="ImgBig">
-		<div class="Wrapp">
+		<!-- <div class="Wrapp">
 			<img src="../assets/images/rooms/imageRoom2.png" alt="imageRoom2" class="Img">
 			<img src="../assets/images/rooms/imageRoom3.png" alt="imageRoom3" class="Img">
-		</div>
+		</div> -->
 	</div>
 	<div class="Wrapper Container">
 		<div class="RoomInfo">
@@ -32,8 +32,11 @@
 					</div>
 				</div>	
 			</div>
-			<div class="ImpressionsRoom">
-			</div>
+			<!-- <div class="ImpressionsRoom">
+				<div class="Title">Впечатления от номера</div>
+				<div class="Graph"></div>
+				<div class="List"></div>
+			</div> -->
 			<div class="Reviews">
 				<div class="Header">
 					<div class="Title">Отзывы посетителей номера</div>
@@ -118,7 +121,6 @@ export default {
 		display: flex;
 		justify-content: center;
 		align-items: flex-start;
-		height: 650px;
 		.Wrapp {
 			width: 32%;
 			.Img {
@@ -128,8 +130,7 @@ export default {
 			}
 		}
 		.ImgBig {
-			width: 68%;
-			height: 100%;
+			width: 100%;
 		}
 	}
 	.Wrapper {
@@ -384,6 +385,62 @@ export default {
 		}
 	}
 	
-	
+	@media (min-width: $MobileMini) and (max-width: calc(#{$Mobile} - 0.02px)) {
+		.Wrapper {
+			flex-direction: column;
+		}
+		.RoomInfo {
+			width: 100%;
+			.Cancellations {
+				width: 100%;
+			}
+			.Rules {
+				width: 100%;
+			}
+		}
+	}
+
+	@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {
+		.Wrapper {
+			flex-direction: column;
+		}
+		.RoomInfo {
+			width: 100%;
+			.Cancellations {
+				width: 100%;
+			}
+			.Rules {
+				width: 100%;
+			}
+		}
+	}
+
+	@media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {
+		.Wrapper {
+			flex-direction: column;
+		}
+		.RoomInfo {
+			width: 100%;
+			.Cancellations {
+				width: 100%;
+			}
+			.Rules {
+				width: 100%;
+			}
+		}
+	}
+
+	@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
+		.RoomInfo {
+			width: 55%;
+			padding: 0 20px 0 0;
+		}
+	}
+	@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {
+		.RoomInfo {
+			width: 55%;
+			padding: 0 20px 0 0;
+		}
+	}
 	
 </style>

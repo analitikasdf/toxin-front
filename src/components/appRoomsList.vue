@@ -18,19 +18,65 @@
 							v-show="item.Lux"
 							class="Lux">Lux</div>
 						<div class="Price">{{item.Price}}₽ в сутки</div>
+						
 					</div>
 					<br>
 					<div class="Rating">
-						<div class="Stars">12345</div>
+						<div
+							class="Stars"
+							v-if="item.Stars === 1">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star_border.svg" alt="" class="Star">
+							<img src="@/assets/icons/star_border.svg" alt="" class="Star">
+							<img src="@/assets/icons/star_border.svg" alt="" class="Star">
+							<img src="@/assets/icons/star_border.svg" alt="" class="Star">
+						</div>
+						<div
+							class="Stars"
+							v-if="item.Stars === 2">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star_border.svg" alt="" class="Star">
+							<img src="@/assets/icons/star_border.svg" alt="" class="Star">
+							<img src="@/assets/icons/star_border.svg" alt="" class="Star">
+						</div>
+						<div
+							class="Stars"
+							v-if="item.Stars === 3">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star_border.svg" alt="" class="Star">
+							<img src="@/assets/icons/star_border.svg" alt="" class="Star">
+						</div>
+						<div
+							class="Stars"
+							v-if="item.Stars === 4">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star_border.svg" alt="" class="Star">
+						</div>
+						<div
+							class="Stars"
+							v-if="item.Stars === 5">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+							<img src="@/assets/icons/star.svg" alt="" class="Star">
+						</div>
 						<div class="Reviews">145 Отзывов</div>
 					</div>
 				</div>
 			</div>	
 		</div>
-		<div
+		<!-- <div
 			class="ButtonGradient"
 			v-if="roomsList.length > 0"
-			@click="loadMoreRooms">загрузить еще</div>
+			@click="loadMoreRooms">загрузить еще
+		</div> -->
 		<div
 			class="box Loader"
 			v-if="roomsList.length === 0 & noRes === false"
@@ -140,6 +186,9 @@ export default {
 				font-size: 14px;
 				color: rgba(31, 32, 65, 0.5);
 			}
+			.Star{
+				height: 18px;
+			}
 
 		}
 	}
@@ -172,17 +221,28 @@ export default {
 }
 
 @media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {
-	
+	.RoomCard {
+		width: calc(100% / 1 - 12px);
+	}
 }
 
 @media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {
-	
+	.RoomCard {
+		width: calc(100% / 1 - 12px);
+	}
 }
 
 @media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
-	
+	.RoomCard {
+		width: calc(100% / 2 - 12px);
+	}
 }
-@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {
+@media (min-width: $Desktop) and (max-width: calc(#{$FullSizeSmall} - 0.02px)) {
+	.RoomCard {
+		width: calc(100% / 2 - 12px);
+	}
+}
+@media (min-width: $FullSizeSmall) and (max-width: calc(#{$FullSize} - 0.02px)) {
 	
 }
 </style>

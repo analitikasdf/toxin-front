@@ -91,7 +91,6 @@ export default {
 			flex-direction: column;
 			.Filter {
 				width: 100%;
-				padding: 0px 0px 30px;
 			}
 			.List {
 				width: 100%;
@@ -101,7 +100,17 @@ export default {
 	}
 
 	@media (min-width: $Mobile) and (max-width: calc(#{$TabletSmall} - 0.02px)) {
-		
+		.Wrapp {
+			display: flex;
+			flex-direction: column;
+			.Filter {
+				width: 100%;
+			}
+			.List {
+				width: 100%;
+			}
+			
+		}
 	}
 
 	@media (min-width: $TabletSmall) and (max-width: calc(#{$Laptop} - 0.02px)) {

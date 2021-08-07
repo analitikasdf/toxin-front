@@ -12,7 +12,7 @@ export default {
 			state.noRes = false
 			state.roomsList = item
 			state.roomsList.map(item => {
-				let validKeys = [ 'Number', 'Lux', 'Price' ]
+				let validKeys = [ 'Number', 'Lux', 'Price', 'Stars' ]
 				Object.keys(item).forEach((key) => validKeys.includes(key) || delete item[key])
 			})
 		},
@@ -31,7 +31,7 @@ export default {
 			})
 			.then(response => {
 				// Handle success.
-				// console.log(response.data);
+				console.log(response.data);
 				if(response.data.length === 0) {
 					commit('noResultat')
 				} else commit('setRooms', response.data)
