@@ -77,7 +77,6 @@ export default {
 			this.$store.commit('clearState')
 			this.$store.dispatch('roomsLoad', item)
 			this.$router.push({ path: this.$route.path, query: item })
-			console.log(this.$route.path, 'path');
 		},
 		hideFilter() {
 			this.activeHideFilter = !this.activeHideFilter

@@ -6,8 +6,7 @@
 				:roomsPriceMax="roomsPriceMax"
 				:roomsPriceMin="roomsPriceMin"
 				:moreRooms="moreRooms"
-				@minValue="onMinValue"
-				@maxValue="onMaxValue"
+				
 			/>
 			<app-rooms-list
 				class="List"
@@ -41,7 +40,6 @@ export default {
 		// }
 		onLoadMoreRooms() {
 			this.moreRooms = this.moreRooms + 6
-			console.log(this.moreRooms);
 		}
 	},
 	mounted() {

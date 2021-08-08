@@ -10,7 +10,20 @@
 				class="RoomCard"
 				@click="$router.push({ path: '/room', query: { rooms_id: item.Number } })"
 				v-for="item in roomsList" :key="item.id">
-				<img class="SliderRoomImage" src="@/assets/images/rooms/room1.png" alt="room">
+				
+				<swiper
+					:pagination="true"
+					:breakpoints="swiperOptions.breakpoints"
+					:slides-per-view="1"
+					:space-between="5"
+					@swiper="onSwiper"
+					@slideChange="onSlideChange"
+				>
+					<swiper-slide><img class="SliderRoomImage" src="@/assets/images/rooms/room1.png" alt="room"></swiper-slide>
+					<swiper-slide><img class="SliderRoomImage" src="@/assets/images/rooms/room1.png" alt="room"></swiper-slide>
+					<swiper-slide><img class="SliderRoomImage" src="@/assets/images/rooms/room1.png" alt="room"></swiper-slide>
+					...
+				</swiper>
 				<div class="Disrcription">
 					<div class="RoomInfo">
 						<div class="Order">№ {{item.Number}}</div>
@@ -100,6 +113,23 @@
 </template>
 
 <script>
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/swiper.scss';
+
+import "swiper/components/pagination/pagination.min.css"
+
+
+// import Swiper core and required modules
+import SwiperCore, {
+  Pagination
+} from 'swiper/core';
+
+// install Swiper modules
+SwiperCore.use([Pagination]);
+
 export default {
 	props: {
 		roomsList: null,
@@ -107,21 +137,49 @@ export default {
 	emits: {
 		loadMoreRooms: null,
 	},
+	components: {
+		Swiper,
+		SwiperSlide,
+	},
 	data() {
 		return {
-		}
+			swiperOptions: {
+				breakpoints: {       
+					// 320: {
+					// 	slidesPerView: 1,
+					// 	spaceBetween: 10
+					// },
+					// 770: {
+					// 	slidesPerView: 2,
+					// 	spaceBetween: 50
+					// },
+				
+					// 771: {
+					// 	slidesPerView: 4,
+					// 	spaceBetween: 30
+					// } 
+				}
+			}
+		}		
+		
 	},
 	created() {
 	},
 	computed: {
 		noRes() {
 			return this.$store.state.rooms.noRes
-		}
+		},
 	},
 	methods: {
 		loadMoreRooms() {
 			this.$emit('loadMoreRooms')
-		}
+		},
+		onSwiper(swiper) {
+			console.log(swiper);
+		},
+		onSlideChange() {
+			console.log('slide change');
+		},
 	}
 }
 </script>

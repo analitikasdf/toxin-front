@@ -31,8 +31,7 @@
 		<div class="Authorization">
 			<router-link
 				v-if="!loginUser"
-				to="/login" class="Button"
-				@click.prevent="openModalLogIn">
+				to="/login" class="Button">
 				войти
 			</router-link>
 			<router-link
@@ -44,8 +43,7 @@
 			<router-link
 				v-if="!loginUser"
 				to="/checkin"
-				class="ButtonGradient"
-				@click.prevent="openModalCheckin">
+				class="ButtonGradient">
 				зарегистрироваться
 			</router-link>
 			<div

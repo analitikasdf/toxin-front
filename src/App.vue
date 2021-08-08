@@ -21,19 +21,19 @@ export default {
 		// AppLogIn
 	},
 	methods: {
-		openModalCheckIn() {
-			this.isCloseCheckIn = true;
-		},
-		closeModalCheckIn() {
-			this.isCloseCheckIn = false;
-		},
-		openModalLogIn() {
-			console.log('открыть вход');
-			this.isCloseLogIn = true;
-		},
-		closeModalLogIn() {
-			this.isCloseLogIn = false;
-		},
+		// openModalCheckIn() {
+		// 	this.isCloseCheckIn = true;
+		// },
+		// closeModalCheckIn() {
+		// 	this.isCloseCheckIn = false;
+		// },
+		// openModalLogIn() {
+		// 	console.log('открыть вход');
+		// 	this.isCloseLogIn = true;
+		// },
+		// closeModalLogIn() {
+		// 	this.isCloseLogIn = false;
+		// },
 	},
 	computed: {
 		getUser() {
@@ -46,8 +46,6 @@ export default {
 		if (data) {
 			this.$store.commit('localStorage', data)
 		}
-
-		console.log(process.env.VUE_BASE_URL, "test");
 	}
 }
 	
