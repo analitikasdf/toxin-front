@@ -1,12 +1,17 @@
 <template>
+	<app-modal v-if="getUserName">
+		{{getUserName}}
+	</app-modal>
 	<app-header v-cloak />
 	<router-view v-cloak />
 	<app-footer v-cloak />
+	<!-- <pre>{{getUserName}}</pre> -->
 </template>
 
 <script>
 import appHeader from '@/components/appHeader'
 import appFooter from '@/components/appFooter'
+import appModal from '@/components/appModal'
 
 
 export default {
@@ -17,6 +22,7 @@ export default {
 	components: {
 		appHeader,
 		appFooter,
+		appModal,
 		// appCheckIn,
 		// AppLogIn
 	},
@@ -36,8 +42,8 @@ export default {
 		// },
 	},
 	computed: {
-		getUser() {
-			return this.$store.state.loginUser
+		getUserName() {
+			return this.$store.state.logIn.loginUser.username
 		}
 	},
 	created: function() {
@@ -56,4 +62,6 @@ export default {
 	@import './assets/fonts/stylesheet.css';
 	@import './assets/scss/_variables.scss';
 	@import './assets/scss/UIkit.scss';
+	#app {
+	}
 </style>
