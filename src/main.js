@@ -12,7 +12,7 @@ import '@vueform/toggle/themes/default.css'
 
 import 'swiper/swiper.scss';
 
-import "swiper/components/pagination/pagination.min.css"
+import "swiper/components/pagination/pagination.scss"
 
 createApp(App)
 	.use(store)
