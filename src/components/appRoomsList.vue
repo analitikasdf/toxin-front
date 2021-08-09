@@ -12,7 +12,7 @@
 				v-for="item in roomsList" :key="item.id">
 				
 				<swiper
-					:pagination="true"
+					:pagination='{"dynamicBullets": true}'
 					:breakpoints="swiperOptions.breakpoints"
 					:slides-per-view="1"
 					:space-between="5"
