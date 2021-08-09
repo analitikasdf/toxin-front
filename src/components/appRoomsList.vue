@@ -22,9 +22,8 @@
 					<swiper-slide><img class="SliderRoomImage" src="@/assets/images/rooms/room1.png" alt="room"></swiper-slide>
 					<swiper-slide><img class="SliderRoomImage" src="@/assets/images/rooms/room1.png" alt="room"></swiper-slide>
 					<swiper-slide><img class="SliderRoomImage" src="@/assets/images/rooms/room1.png" alt="room"></swiper-slide>
-					...
 				</swiper>
-				<div class="Disrcription">
+				<div class="Disrcription"> 
 					<div class="RoomInfo">
 						<div class="Order">№ {{item.Number}}</div>
 						<div
