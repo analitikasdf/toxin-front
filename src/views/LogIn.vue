@@ -1,4 +1,7 @@
 <template>
+	<app-modal v-if="getUserName">
+		{{getUserName}}
+	</app-modal>
 	<div class="ImgMain">
 		<div class="ModalWrap" @click="closeModal">
 			<form action="" class="Form" @click.stop>
@@ -38,10 +41,14 @@
 import useVuelidate from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 import { useStorage } from '@vueuse/core'
+import appModal from '@/components/appModal'
 
 export default {
 	emits: {
 		hendleCloseModalLogIn: null
+	},
+	components: {
+		appModal
 	},
 	data() {
 		return {
@@ -106,7 +113,9 @@ export default {
 				ErrorClass: this.v$.user.email.$error
 			}
 		},
-		
+		getUserName() {
+			return this.$store.state.logIn.loginUser.username
+		}
 	},
 	watch: {
 		setUser() {
