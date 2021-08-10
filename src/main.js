@@ -10,10 +10,6 @@ import 'normalize.css'
 import '@vueform/toggle/themes/default.css'
 // import '@vueform/slider/themes/default.css'
 
-import 'swiper/swiper.min.css';
-
-import "swiper/components/pagination/pagination.min.css"
-
 createApp(App)
 	.use(store)
 	.use(router)

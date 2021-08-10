@@ -15,7 +15,8 @@
 					:pagination='{"dynamicBullets": true}'
 					:breakpoints="swiperOptions.breakpoints"
 					:slides-per-view="1"
-					:space-between="5"
+					:space-between="50"
+					:scrollbar="{ draggable: true }"
 					@swiper="onSwiper"
 					@slideChange="onSlideChange"
 				>
@@ -112,19 +113,21 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
-
-
-
 // import Swiper core and required modules
-import SwiperCore, {
-  Pagination
-} from 'swiper/core';
+  import SwiperCore, { Pagination, Scrollbar, A11y } from 'swiper';
 
-// install Swiper modules
-SwiperCore.use([Pagination]);
+  // Import Swiper Vue.js components
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+
+  // Import Swiper styles
+  import 'swiper/swiper.scss';
+  import 'swiper/components/pagination/pagination.scss';
+  import 'swiper/components/scrollbar/scrollbar.scss';
+
+  // install Swiper modules
+  SwiperCore.use([ Pagination, Scrollbar, A11y]);
+
+  // Import Swiper styles
 
 export default {
 	props: {
