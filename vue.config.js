@@ -9,5 +9,6 @@ module.exports = {
 			prependData: `@import "@/assets/scss/_variables.scss";`
 		},
 	  }
-	}
+	},
+	publicPath: ''
   }
