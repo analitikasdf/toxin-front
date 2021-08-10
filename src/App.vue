@@ -1,28 +1,35 @@
 <template>
-	<app-modal v-if="getUserName">
-		{{getUserName}}
-	</app-modal>
-	<app-header v-cloak />
-	<router-view v-cloak />
-	<app-footer v-cloak />
+	<!-- <transition name="fade">
+		<app-modal
+			v-if="getMessage"
+			@onCloseModal="closeModal">
+			{{getUserName}}
+		</app-modal>
+	</transition> -->
+	
+	<app-header  />
+	<router-view />
+	<app-footer  />
 	<!-- <pre>{{getUserName}}</pre> -->
+
 </template>
 
 <script>
 import appHeader from '@/components/appHeader'
 import appFooter from '@/components/appFooter'
-import appModal from '@/components/appModal'
+// import appModal from '@/components/appModal'
 
 
 export default {
 	data() {
 		return {
+			showModal: true
 		}
 	},
 	components: {
 		appHeader,
 		appFooter,
-		appModal,
+		// appModal,
 		// appCheckIn,
 		// AppLogIn
 	},
@@ -40,10 +47,16 @@ export default {
 		// closeModalLogIn() {
 		// 	this.isCloseLogIn = false;
 		// },
+		closeModal() {
+			this.$store.state.logIn.message = ''
+		}
 	},
 	computed: {
 		getUserName() {
 			return this.$store.state.logIn.loginUser.username
+		},
+		getMessage() {
+			return this.$store.state.logIn.message
 		}
 	},
 	created: function() {
@@ -64,4 +77,5 @@ export default {
 	@import './assets/scss/UIkit.scss';
 	#app {
 	}
+	
 </style>

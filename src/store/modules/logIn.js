@@ -4,6 +4,7 @@ export default {
     state: {
 		loginUser: {},
 		loginUserError: {},
+		message: false,
 	},
 	mutations: {
 		updateUser(state, item) {
@@ -22,6 +23,9 @@ export default {
 		logOut(state) {
 			state.loginUser = {}
 			localStorage.setItem('user', null)
+		},
+		message(state) {
+			state.message = state.loginUser.username
 		}
 	},
 	actions: {
@@ -38,6 +42,7 @@ export default {
 				console.log('User token', response.data.jwt);
 				console.log('Status', response.status);
 				commit('updateUser',  response.data.user)
+				response.data.user ? commit('message') :
 				localStorage.setItem('user', JSON.stringify(response.data.user))
 			})
 			.catch(error => {

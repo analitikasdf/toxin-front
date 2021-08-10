@@ -70,9 +70,12 @@
 				</div>
 			</div>
 		</div>
-		<app-mobile-menu
-			:openMobileMenu="openMobileMenu"
-		/>
+		<transition name="fade">
+			<app-mobile-menu
+				v-if="activeClassHumburher"
+				:openMobileMenu="activeClassHumburher"
+			/>
+		</transition> 
 	</header>
 </template>
 
@@ -164,6 +167,14 @@ export default {
 
 <style lang="scss" scoped>
 	@import "~hamburgers/_sass/hamburgers/hamburgers.scss";
+
+	.fade-enter-active, .fade-leave-active {
+		transition: opacity .5s;
+	}
+	.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+		opacity: 0;
+	}
+  
 
 	.hamburger {
 		display: none;

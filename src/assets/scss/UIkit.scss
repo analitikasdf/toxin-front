@@ -17,6 +17,7 @@
 	--toggle-bg-off: #e5e7eb;
 	--toggle-border-on: #BC9CFF;
 	--toggle-border-off: #e5e7eb;
+	--swiper-pagination-color: #BC9CFF;
 
 
 	--slider-connect-bg: #BC9CFF;
@@ -381,16 +382,28 @@ a {
 	  }
 	}
   }
+
+
+/*	#################### - Developer toxin.ru - ########################	*/
+/*	Animation																*/
+/*	#################### - Developer toxin.ru - ########################	*/
+
+  	.fade-enter-active, .fade-leave-active {
+		transition: opacity .5s;
+	}
+	.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+		opacity: 0;
+	}
   
-  @keyframes grow {
-	from {transform: scale(0,0); opacity: 0;}
-	to {transform: scale(1,1); opacity: 1;}
-  }
-  
-  @keyframes move {
-	from {transform: translateX(0px)}
-	to {transform: translateX(45px)}
-  }
+	@keyframes grow {
+		from {transform: scale(0,0); opacity: 0;}
+		to {transform: scale(1,1); opacity: 1;}
+	}
+	
+	@keyframes move {
+		from {transform: translateX(0px)}
+		to {transform: translateX(45px)}
+	}
 
 
 /*	#################### - Developer toxin.ru - ########################	*/

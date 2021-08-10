@@ -180,11 +180,17 @@ export default {
 		.Filter {
 			padding: 0 20px;
 		}
+		.Filter .Button {
+			width: 60%;
+		}
 	}  
 
 	@media (min-width: $Laptop) and (max-width: calc(#{$Desktop} - 0.02px)) {
 		.Filter {
 			padding: 0 20px;
+		}
+		.Filter .Button {
+			width: 60%;
 		}
 	}
 	@media (min-width: $Desktop) and (max-width: calc(#{$FullSize} - 0.02px)) {

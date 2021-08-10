@@ -1,8 +1,8 @@
 <template>
+
 	<nav
 		class="Menu"
-		:class="{isActive: openMobileMenu}"
-		v-if="menuActive">
+		>
 		<div
 			class="MenuItem"
 			v-for="link in menu.menu" :key="link">
@@ -53,6 +53,7 @@
 			</div>
 		</div>
 	</nav>
+
 </template>
 
 <script>
@@ -127,13 +128,10 @@ export default {
 
 <style lang="scss" scoped>
 	.Menu {
-		display: none;
+		display: block;
 		transition: all .2s;
 		overflow: visible;
 		padding: 0 0 10px 0;
-	}
-	.isActive {
-		display: block;
 	}
 	.MenuLink {
 		font-family: Montserrat;
