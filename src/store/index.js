@@ -15,7 +15,10 @@ export default createStore({
 		},
     messageCheckin(state) {
 			state.messageModal = state.checkIn.user.username  
-		}
+		},
+    logOut(state) {
+      state.messageModal = false
+    }
   },
   actions: {
   },

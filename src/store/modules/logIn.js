@@ -23,6 +23,7 @@ export default {
 		logOut(state) {
 			state.loginUser = {}
 			localStorage.setItem('user', null)
+			state.messageModal = false
 		},
 		
 	},
