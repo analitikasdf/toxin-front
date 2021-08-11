@@ -7,8 +7,15 @@ import rooms from '../store/modules/rooms'
 
 export default createStore({
   state: {
+    messageModal: false
   },
   mutations: {
+    messageLogin(state) {
+			state.messageModal = state.logIn.loginUser.username
+		},
+    messageCheckin(state) {
+			state.messageModal = state.checkIn.user.username  
+		}
   },
   actions: {
   },

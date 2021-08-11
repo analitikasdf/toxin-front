@@ -24,9 +24,7 @@ export default {
 			state.loginUser = {}
 			localStorage.setItem('user', null)
 		},
-		message(state) {
-			state.message = state.loginUser.username
-		}
+		
 	},
 	actions: {
 		logInUser({commit}, { email, password }) {
@@ -42,7 +40,7 @@ export default {
 				console.log('User token', response.data.jwt);
 				console.log('Status', response.status);
 				commit('updateUser',  response.data.user)
-				response.data.user ? commit('message') :
+				response.data.user ? commit('messageLogin') :
 				localStorage.setItem('user', JSON.stringify(response.data.user))
 			})
 			.catch(error => {

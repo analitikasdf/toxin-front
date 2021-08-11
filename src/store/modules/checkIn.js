@@ -23,6 +23,7 @@ export default {
 				console.log('User profile', response.data.user);
 				console.log('User token', response.data.jwt);
 				commit('setUser', response.data.user)
+				commit('messageCheckin')
 			})
 			.catch(error => {
 				// Handle error.

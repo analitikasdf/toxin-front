@@ -1,8 +1,8 @@
 <template>
 	<div class="Modal">
 		<div class="Message">
-			Добро пожаловать
-			<slot></slot>
+			<slot name="login"></slot>
+			<slot name="checkin"></slot>
 		</div>
 		<button
 			@click.stop="closeModal"
@@ -28,10 +28,10 @@ export default {
 <style lang="scss" scoped>
 	.Modal {
 		padding: 10px;
-		position: absolute;
+		position: fixed;
 		bottom:20px;
 		left:50%;
-		transform:translate(-50%, -50%);
+		transform:translate(-50%, 0%);
 		border-radius: 4px;
 		box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 		background-color: #fff;

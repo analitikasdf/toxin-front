@@ -1,11 +1,20 @@
 <template>
-	<!-- <transition name="fade">
+	<transition-group name="fade">
 		<app-modal
-			v-if="getMessage"
+			v-if="message"
 			@onCloseModal="closeModal">
-			{{getUserName}}
+			<template
+				v-slot:login
+				v-if="getUserNameLogin">
+				<div>Добро пожаловать {{message}}</div>
+			</template>
+			<template
+				v-slot:checkin
+				v-if="getUserNameCheckin">
+				<div>{{message}} Вы успешно зарегистрировались</div>
+			</template>
 		</app-modal>
-	</transition> -->
+	</transition-group>
 	
 	<app-header  />
 	<router-view />
@@ -17,7 +26,7 @@
 <script>
 import appHeader from '@/components/appHeader'
 import appFooter from '@/components/appFooter'
-// import appModal from '@/components/appModal'
+import appModal from '@/components/appModal'
 
 
 export default {
@@ -29,7 +38,7 @@ export default {
 	components: {
 		appHeader,
 		appFooter,
-		// appModal,
+		appModal,
 		// appCheckIn,
 		// AppLogIn
 	},
@@ -48,15 +57,18 @@ export default {
 		// 	this.isCloseLogIn = false;
 		// },
 		closeModal() {
-			this.$store.state.logIn.message = ''
+			this.$store.state.messageModal = ''
 		}
 	},
 	computed: {
-		getUserName() {
+		getUserNameLogin() {
 			return this.$store.state.logIn.loginUser.username
 		},
-		getMessage() {
-			return this.$store.state.logIn.message
+		getUserNameCheckin() {
+			return this.$store.state.checkIn.user.username
+		},
+		message() {
+			return this.$store.state.messageModal
 		}
 	},
 	created: function() {
